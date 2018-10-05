@@ -57,7 +57,7 @@ public class gui extends JFrame {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JComboBox<String> comboBox = new JComboBox(new String[] {"","Lo","Laxus","Krato","Ezaron","Temp1","Temp2"});
+		JComboBox<String> comboBox = new JComboBox<String>(new String[] {"","Lo","Laxus","Krato","Ezaron","Temp1","Temp2"});
 		comboBox.setBounds(7, 11, 103, 20);
 		panel.add(comboBox);
 
