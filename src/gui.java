@@ -85,7 +85,7 @@ public class gui {
 		JRadioButton rdbtnAuerGefecht = new JRadioButton("Außer Gefecht");
 		rdbtnAuerGefecht.setBounds(10, 238, 109, 23);
 		panel.add(rdbtnAuerGefecht);
-		wundgrad.add(rdbtnSchwerVerwundet);
+		wundgrad.add(rdbtnAuerGefecht);
 
 		JRadioButton rdbtnKoma = new JRadioButton("Koma");
 		rdbtnKoma.setBounds(10, 263, 109, 23);
