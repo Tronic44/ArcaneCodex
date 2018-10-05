@@ -22,6 +22,9 @@ public class gui {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * Mein Plan wäre, dass erst ein Fenster erscheint wo man eingeben soll, wie viele Kämpfer am Kampf teilnehmen und dann mit dem Bestätigen erscheint ein
+	 * neues Fenster mit der angegebenen Anzahl an Kämpferslots. In diese Kämpferslots können dann per Auswahl bestimmte Personen reingeladen oder neu erstellt
+	 * werden. Dann muss man nurnoch auswählen, wer genau gegen wen kämpft und schon bekommt man die benötigten Mindestwerte angezeigt.
 	 */
 	private void initialize() {
 		frame = new JFrame();
