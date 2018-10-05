@@ -4,14 +4,21 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 
-public class gui {
+public class gui extends JFrame implements ActionListener{
 
 	JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
+	
+	private JTextField tFcountFighters;
+	private JButton starteProgramm;
 
 	/**
 	 * Create the application.
@@ -26,7 +33,7 @@ public class gui {
 	 * neues Fenster mit der angegebenen Anzahl an Kämpferslots. In diese Kämpferslots können dann per Auswahl bestimmte Personen reingeladen oder neu erstellt
 	 * werden. Dann muss man nurnoch auswählen, wer genau gegen wen kämpft und schon bekommt man die benötigten Mindestwerte angezeigt.
 	 */
-	private void initialize() {
+	/*private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1599, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,5 +102,38 @@ public class gui {
 		panel.add(rdbtnKoma);
 		wundgrad.add(rdbtnKoma);
 
+	}*/
+	
+	private void initialize/*FirstDialog*/(){
+		frame = new JFrame();
+		frame.setBounds(400, 400, 400, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 384, 362);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		tFcountFighters = new JTextField();
+		tFcountFighters.setBounds(149, 120, 80, 30);
+		panel.add(tFcountFighters);
+		tFcountFighters.setColumns(10);
+		
+		JLabel lblFrage = new JLabel("Wie viele Kämpfer?");
+		lblFrage.setBounds(139, 89, 200, 20);
+		panel.add(lblFrage);
+		
+		starteProgramm = new JButton("weiter");
+		starteProgramm.setBounds(140, 209, 89, 23);
+		panel.add(starteProgramm);
+		starteProgramm.addActionListener(this);
 	}
+	
+	public void actionPerformed (ActionEvent ae){
+        if(ae.getSource() == this.starteProgramm){
+            System.out.println("Button starteProgramm wurde gedrückt");
+            System.out.println(tFcountFighters.getText());
+        }
+    }
 }
