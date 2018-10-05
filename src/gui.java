@@ -33,7 +33,7 @@ public class gui extends JFrame implements ActionListener{
 	 * neues Fenster mit der angegebenen Anzahl an Kämpferslots. In diese Kämpferslots können dann per Auswahl bestimmte Personen reingeladen oder neu erstellt
 	 * werden. Dann muss man nurnoch auswählen, wer genau gegen wen kämpft und schon bekommt man die benötigten Mindestwerte angezeigt.
 	 */
-	/*private void initialize() {
+	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1599, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -102,34 +102,42 @@ public class gui extends JFrame implements ActionListener{
 		panel.add(rdbtnKoma);
 		wundgrad.add(rdbtnKoma);
 
-	}*/
+	}
 	
-	private void initialize/*FirstDialog*/(){
+	private void initializeFirstDialog(){
 		frame = new JFrame();
-		frame.setBounds(400, 400, 400, 400);
+		frame.setBounds(300, 300, 300, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 384, 362);
+		panel.setBounds(0, 0, 284, 262);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		tFcountFighters = new JTextField();
-		tFcountFighters.setBounds(149, 120, 80, 30);
+		tFcountFighters.setBounds(100, 100, 100, 30);
 		panel.add(tFcountFighters);
 		tFcountFighters.setColumns(10);
 		
 		JLabel lblFrage = new JLabel("Wie viele Kämpfer?");
-		lblFrage.setBounds(139, 89, 200, 20);
+		lblFrage.setBounds(100, 65, 106, 20);
 		panel.add(lblFrage);
 		
 		starteProgramm = new JButton("weiter");
-		starteProgramm.setBounds(140, 209, 89, 23);
+		starteProgramm.setBounds(100, 141, 100, 23);
 		panel.add(starteProgramm);
 		starteProgramm.addActionListener(this);
 	}
 	
+	//das Objekt "FighterPanel" (noch nicht erstellt) was die GUI für einen Kämpfer ist wird erstellt und die werte werden abgefragt...
+	//es bräuchte einen Array wo alle FPanels abgespeichert sind um darauf zugreifen zu können... Und einen Indexgleichen Array wo dann alle Kämpfer
+	//(die Werte von ihnen) abgespeichert werden.
+	private void initializeFighters(){
+		
+	}
+	
+	//ActionListener. Mehr nicht.
 	public void actionPerformed (ActionEvent ae){
         if(ae.getSource() == this.starteProgramm){
             System.out.println("Button starteProgramm wurde gedrückt");
