@@ -35,15 +35,15 @@ public class gui {
 		panel.setLayout(null);
 
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(20, 14, 122, 20);
+		comboBox.setBounds(32, 14, 122, 20);
 		panel.add(comboBox);
 
 		JLabel lblNewLabel = new JLabel("Belastung");
-		lblNewLabel.setBounds(10, 45, 65, 14);
+		lblNewLabel.setBounds(11, 45, 65, 14);
 		panel.add(lblNewLabel);
 
 		textField = new JTextField();
-		textField.setBounds(85, 42, 86, 20);
+		textField.setBounds(87, 42, 86, 20);
 		panel.add(textField);
 		textField.setColumns(10);
 
@@ -52,43 +52,43 @@ public class gui {
 		panel.add(lblWundgrad);
 
 		JButton btnNewButton = new JButton("Berechne Init");
-		btnNewButton.setBounds(20, 68, 122, 23);
+		btnNewButton.setBounds(32, 68, 122, 23);
 		panel.add(btnNewButton);
 
 		textField_1 = new JTextField();
-		textField_1.setBounds(67, 92, 33, 20);
+		textField_1.setBounds(76, 92, 33, 20);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 
 		ButtonGroup wundgrad = new ButtonGroup();
 
 		JRadioButton rdbtnAngeschlagen = new JRadioButton("Angeschlagen");
-		rdbtnAngeschlagen.setBounds(10, 144, 109, 23);
+		rdbtnAngeschlagen.setBounds(10, 144, 144, 23);
 		panel.add(rdbtnAngeschlagen);
 		wundgrad.add(rdbtnAngeschlagen);
 
 		JRadioButton rdbtnVerletzt = new JRadioButton("Verletzt");
-		rdbtnVerletzt.setBounds(10, 167, 109, 23);
+		rdbtnVerletzt.setBounds(10, 167, 144, 23);
 		panel.add(rdbtnVerletzt);
 		wundgrad.add(rdbtnVerletzt);
 
 		JRadioButton rdbtnVerwundet = new JRadioButton("Verwundet");
-		rdbtnVerwundet.setBounds(10, 189, 109, 23);
+		rdbtnVerwundet.setBounds(10, 189, 144, 23);
 		panel.add(rdbtnVerwundet);
 		wundgrad.add(rdbtnVerwundet);
 
 		JRadioButton rdbtnSchwerVerwundet = new JRadioButton("Schwer verwundet");
-		rdbtnSchwerVerwundet.setBounds(10, 215, 132, 23);
+		rdbtnSchwerVerwundet.setBounds(10, 215, 144, 23);
 		panel.add(rdbtnSchwerVerwundet);
 		wundgrad.add(rdbtnSchwerVerwundet);
 
 		JRadioButton rdbtnAuerGefecht = new JRadioButton("Außer Gefecht");
-		rdbtnAuerGefecht.setBounds(10, 238, 109, 23);
+		rdbtnAuerGefecht.setBounds(10, 238, 144, 23);
 		panel.add(rdbtnAuerGefecht);
 		wundgrad.add(rdbtnAuerGefecht);
 
 		JRadioButton rdbtnKoma = new JRadioButton("Koma");
-		rdbtnKoma.setBounds(10, 263, 109, 23);
+		rdbtnKoma.setBounds(10, 263, 144, 23);
 		panel.add(rdbtnKoma);
 		wundgrad.add(rdbtnKoma);
 
