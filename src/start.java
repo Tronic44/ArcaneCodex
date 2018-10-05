@@ -2,7 +2,7 @@ import java.awt.EventQueue;
 
 public class start {
 	/**
-	 * Ich grüße Robin
+	 * Ich grüße Robin nicht mehr
 	 * @param args
 	 */
 	public static void main(String[] args) {
