@@ -3,16 +3,9 @@ import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
+
 import javax.swing.JSpinner;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
@@ -120,7 +113,7 @@ public class gui extends JFrame {
 		lblErfolge.setBounds(18, 159, 47, 14);
 		panel.add(lblErfolge);
 		
-		JComboBox<String> comboBox_1 = new JComboBox(new String[] {"Gesund","Angeschlagen","Verletzt","Verwundet","Schwer verwundet","Außer Gefecht"});
+		JComboBox<String> comboBox_1 = new JComboBox<String>(new String[] {"Gesund","Angeschlagen","Verletzt","Verwundet","Schwer verwundet","Außer Gefecht"});
 		comboBox_1.setBounds(70, 77, 95, 20);
 		panel.add(comboBox_1);
 	
@@ -129,7 +122,7 @@ public class gui extends JFrame {
 		lblKampfart.setBounds(7, 108, 65, 14);
 		panel.add(lblKampfart);
 		
-		JComboBox<String> comboBox_2 = new JComboBox(new String[] {"Angreifen","Abblocken","Parieren","Ausweichen"});
+		JComboBox<String> comboBox_2 = new JComboBox<String>(new String[] {"Angreifen","Abblocken","Parieren","Ausweichen"});
 		comboBox_2.setBounds(70, 105, 95, 20);
 		panel.add(comboBox_2);
 		
@@ -237,9 +230,4 @@ public class gui extends JFrame {
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }
