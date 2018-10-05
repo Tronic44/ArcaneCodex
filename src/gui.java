@@ -77,32 +77,28 @@ public class gui {
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("New radio button");
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Angeschlagen");
 		rdbtnNewRadioButton.setBounds(10, 144, 109, 23);
 		panel.add(rdbtnNewRadioButton);
 		
-		JRadioButton radioButton = new JRadioButton("New radio button");
-		radioButton.setBounds(10, 167, 109, 23);
-		panel.add(radioButton);
+		JRadioButton rdbtnVerletzt = new JRadioButton("Verletzt");
+		rdbtnVerletzt.setBounds(10, 167, 109, 23);
+		panel.add(rdbtnVerletzt);
 		
-		JRadioButton radioButton_1 = new JRadioButton("New radio button");
-		radioButton_1.setBounds(10, 189, 109, 23);
-		panel.add(radioButton_1);
+		JRadioButton rdbtnVerwundet = new JRadioButton("Verwundet");
+		rdbtnVerwundet.setBounds(10, 189, 109, 23);
+		panel.add(rdbtnVerwundet);
 		
-		JRadioButton radioButton_2 = new JRadioButton("New radio button");
-		radioButton_2.setBounds(10, 215, 109, 23);
-		panel.add(radioButton_2);
+		JRadioButton rdbtnSchwerVerwundet = new JRadioButton("Schwer verwundet");
+		rdbtnSchwerVerwundet.setBounds(10, 215, 132, 23);
+		panel.add(rdbtnSchwerVerwundet);
 		
-		JRadioButton radioButton_3 = new JRadioButton("New radio button");
-		radioButton_3.setBounds(10, 238, 109, 23);
-		panel.add(radioButton_3);
+		JRadioButton rdbtnAuerGefecht = new JRadioButton("Außer Gefecht");
+		rdbtnAuerGefecht.setBounds(10, 238, 109, 23);
+		panel.add(rdbtnAuerGefecht);
 		
-		JRadioButton radioButton_4 = new JRadioButton("New radio button");
-		radioButton_4.setBounds(10, 263, 109, 23);
-		panel.add(radioButton_4);
-		
-		JRadioButton radioButton_5 = new JRadioButton("New radio button");
-		radioButton_5.setBounds(10, 289, 109, 23);
-		panel.add(radioButton_5);
+		JRadioButton rdbtnKoma = new JRadioButton("Koma");
+		rdbtnKoma.setBounds(10, 263, 109, 23);
+		panel.add(rdbtnKoma);
 	}
 }
