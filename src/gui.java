@@ -24,24 +24,23 @@ public class gui extends JFrame {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 100, 60);
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-//		addpanel();
 
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 
-		
 		dim = Toolkit.getDefaultToolkit().getScreenSize();
 		JButton btnNewButton_1 = new JButton("Neuer Charakter");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (line < dim.getWidth()-200 && spalte < dim.getHeight()-500) {
+				if (line < dim.getWidth() - 200 && spalte < dim.getHeight() - 500) {
 					addpanel();
 				} else {
 					spalte += 520;
 					line = 0;
-					if(spalte< dim.getHeight()-500) {
+					if (spalte < dim.getHeight() - 500) {
 						addpanel();
 					}
 
@@ -49,7 +48,7 @@ public class gui extends JFrame {
 			}
 		});
 		menuBar.add(btnNewButton_1);
-
+		
 		pack();
 	}
 
@@ -60,7 +59,7 @@ public class gui extends JFrame {
 		panel.setLayout(null);
 		frame.getContentPane().add(panel);
 		line += 174;
-		if (frameline < dim.getWidth()-300) {
+		if (frameline < dim.getWidth() - 300) {
 			frameline += 174;
 		}
 		frame.setBounds(100, 100, frameline + 6, spalte + 574);

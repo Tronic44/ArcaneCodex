@@ -6,9 +6,11 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class CharPanel extends JPanel {
-		
+
 	JPanel panel;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -125,6 +127,17 @@ public class CharPanel extends JPanel {
 
 		JSpinner spinner = new JSpinner();
 		spinner.setBounds(23, 286, 29, 20);
+		spinner.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				if ((int) spinner.getValue() < 0) {
+					spinner.setValue(0);
+				} else {
+					if ((int) spinner.getValue() > 9) {
+						spinner.setValue(9);
+					}
+				}
+			}
+		});
 		panel.add(spinner);
 
 		JLabel lblMehrfachaktion = new JLabel("Mehrfachaktion");
@@ -198,7 +211,7 @@ public class CharPanel extends JPanel {
 		tF_LP.setColumns(10);
 		tF_LP.setBounds(118, 11, 47, 20);
 		panel.add(tF_LP);
-		
+
 		add(panel);
 	}
 }
