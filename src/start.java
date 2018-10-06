@@ -1,10 +1,6 @@
 import java.awt.EventQueue;
 
 public class start {
-	/**
-	 * Ich grüße Yannick nicht mehr
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
