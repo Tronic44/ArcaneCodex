@@ -62,7 +62,7 @@ public class gui extends JFrame {
 		if (frameline < dim.getWidth() - 300) {
 			frameline += 174;
 		}
-		frame.setBounds(100, 100, frameline + 6, spalte + 574);
+		frame.setBounds(frame.getX(), frame.getY(), frameline + 6, spalte + 574);
 		frame.invalidate();
 		frame.validate();
 		frame.repaint();
