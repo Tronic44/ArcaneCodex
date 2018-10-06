@@ -1,0 +1,16 @@
+﻿{
+	"Template":{
+		"Charinit": "0",
+		"Kampftechnikeninitbonus":"0",
+		"Geschicklichkeitsbonus":"0",
+		"Wahrnehmnungsbonus":"0",
+		"Größenklasse":"M",
+		"Konstitutionsbonus":"0",
+		"Stärkebonus":"0",
+		"Willenskraftbonus":"0",
+		"Intelligenzbonus":"0",
+		"Schulboni":"0",
+		"Waffenfertigkeitsbonus":["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"]
+	}
+	"Einträge": ["Template"]
+}
