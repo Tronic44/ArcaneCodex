@@ -5,6 +5,7 @@ public class start {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					Reader.readjson();
 					gui window = new gui();
 					window.frame.setVisible(true);
 				} catch (Exception e) {

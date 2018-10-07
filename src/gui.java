@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class gui extends JFrame {
 
 	JFrame frame;
