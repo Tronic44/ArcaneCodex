@@ -1,6 +1,7 @@
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -18,19 +19,15 @@ public class CharPanel extends JPanel {
 
 	JPanel panel;
 	private JTextField tFfinalinit;
-	private JTextField tFKP;
 	private JTextField tFfinalkampfmodi;
 	private JTextField tFfinalManoever;
-	private JTextField tFErfolge;
 	private JTextField tFWaffe;
 	private JTextField tFRuestung;
 	private JTextField tFSchockresistenz;
 	private JTextField tFGeistigerWiderstand;
 	private JTextField Verteidigungswert;
-	private JTextField tFSonstiges;
 	private JTextField tFAngriffboni;
 	private JTextField tFSchadensboni;
-	private JTextField tF_LP;
 	private String cBCharselect;
 	private int charinit;
 	private int kampftechnikeninitbonus;
@@ -42,6 +39,8 @@ public class CharPanel extends JPanel {
 	private int willenskraftbonus;
 	private int intelligenzbonus;
 	private int[] waffenfertigkeitsbonus;
+
+//	private JFrame frame;
 
 	private void initChar(String player) {
 		try {
@@ -65,12 +64,21 @@ public class CharPanel extends JPanel {
 
 	public CharPanel() {
 
+//		frame = new JFrame();
+//		frame.setBounds(100, 100, 450, 600);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.getContentPane().setLayout(null);
+
 		panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBounds(0, 0, 173, 516);
 		panel.setLayout(null);
+		
+//		frame.getContentPane().add(panel);
 
 		JComboBox<String> cBchangeChar = new JComboBox<String>(Reader.getList());
+//		JComboBox cBchangeChar = new JComboBox(Reader.getList());
+
 		cBchangeChar.setBounds(7, 11, 103, 20);
 		cBchangeChar.addPopupMenuListener(new PopupListener(cBchangeChar) {
 			public void popupMenuWillBecomeInvisible(PopupMenuEvent arg0) {
@@ -104,17 +112,13 @@ public class CharPanel extends JPanel {
 		panel.add(tFfinalinit);
 
 		JLabel lblKp = new JLabel("KP");
-		lblKp.setBounds(19, 136, 33, 14);
+		lblKp.setBounds(18, 136, 33, 14);
 		panel.add(lblKp);
-
-		tFKP = new JTextField();
-		tFKP.setBounds(70, 133, 86, 20);
-		panel.add(tFKP);
 
 		tFfinalkampfmodi = new JTextField();
 		tFfinalkampfmodi.setEditable(false);
 		tFfinalkampfmodi.setColumns(1);
-		tFfinalkampfmodi.setBounds(118, 187, 47, 20);
+		tFfinalkampfmodi.setBounds(120, 187, 47, 20);
 		panel.add(tFfinalkampfmodi);
 
 		JButton btnKampfmodi = new JButton("Kampfmodi");
@@ -128,19 +132,16 @@ public class CharPanel extends JPanel {
 		tFfinalManoever = new JTextField();
 		tFfinalManoever.setEditable(false);
 		tFfinalManoever.setColumns(1);
-		tFfinalManoever.setBounds(118, 219, 47, 20);
+		tFfinalManoever.setBounds(120, 219, 47, 20);
 		panel.add(tFfinalManoever);
 
-		tFErfolge = new JTextField();
-		tFErfolge.setColumns(10);
-		tFErfolge.setBounds(70, 156, 86, 20);
-		panel.add(tFErfolge);
-
 		JLabel lblErfolge = new JLabel("Erfolge");
-		lblErfolge.setBounds(18, 159, 47, 14);
+		lblErfolge.setBounds(18, 162, 47, 14);
 		panel.add(lblErfolge);
 
 		JComboBox<String> cBWundgrad = new JComboBox<String>(new String[] { "Gesund", "Angeschlagen", "Verletzt",
+//		JComboBox cBWundgrad = new JComboBox(new String[] { "Gesund", "Angeschlagen", "Verletzt",
+
 				"Verwundet", "Schwer verwundet", "Außer Gefecht" });
 		cBWundgrad.setBounds(70, 77, 95, 20);
 		panel.add(cBWundgrad);
@@ -150,6 +151,7 @@ public class CharPanel extends JPanel {
 		panel.add(lblKampfart);
 
 		JComboBox<String> cBKampfart = new JComboBox<String>(
+//		JComboBox cBKampfart = new JComboBox(
 				new String[] { "Angreifen", "Abblocken", "Parieren", "Ausweichen" });
 		cBKampfart.setBounds(70, 105, 95, 20);
 		panel.add(cBKampfart);
@@ -160,12 +162,12 @@ public class CharPanel extends JPanel {
 
 		tFWaffe = new JTextField();
 		tFWaffe.setEditable(false);
-		tFWaffe.setBounds(117, 253, 47, 20);
+		tFWaffe.setBounds(120, 253, 47, 20);
 		panel.add(tFWaffe);
 
 		tFRuestung = new JTextField();
 		tFRuestung.setEditable(false);
-		tFRuestung.setBounds(118, 46, 47, 20);
+		tFRuestung.setBounds(120, 46, 47, 20);
 		panel.add(tFRuestung);
 
 		JButton btnRstung = new JButton("Rüstung");
@@ -173,7 +175,7 @@ public class CharPanel extends JPanel {
 		panel.add(btnRstung);
 
 		JSpinner spMehrfachaktion = new JSpinner();
-		spMehrfachaktion.setBounds(23, 286, 29, 20);
+		spMehrfachaktion.setBounds(120, 286, 47, 20);
 		spMehrfachaktion.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if ((int) spMehrfachaktion.getValue() < 0) {
@@ -187,8 +189,8 @@ public class CharPanel extends JPanel {
 		});
 		panel.add(spMehrfachaktion);
 
-		JLabel lblMehrfachaktion = new JLabel("Mehrfachaktion");
-		lblMehrfachaktion.setBounds(75, 286, 90, 20);
+		JLabel lblMehrfachaktion = new JLabel("Mehrfachaktionen");
+		lblMehrfachaktion.setBounds(18, 286, 113, 20);
 		panel.add(lblMehrfachaktion);
 
 		JLabel lblSchockresistenz = new JLabel("SR");
@@ -225,16 +227,12 @@ public class CharPanel extends JPanel {
 		panel.add(btnBerechne);
 
 		JLabel lblSonstiges = new JLabel("Sonstiges");
-		lblSonstiges.setBounds(16, 320, 77, 14);
+		lblSonstiges.setBounds(18, 320, 77, 14);
 		panel.add(lblSonstiges);
-
-		tFSonstiges = new JTextField();
-		tFSonstiges.setBounds(83, 317, 86, 20);
-		panel.add(tFSonstiges);
 
 		tFAngriffboni = new JTextField();
 		tFAngriffboni.setEditable(false);
-		tFAngriffboni.setBounds(118, 379, 47, 20);
+		tFAngriffboni.setBounds(120, 379, 47, 20);
 		panel.add(tFAngriffboni);
 
 		JLabel lblAngriffboni = new JLabel("Angriffsboni:");
@@ -243,17 +241,72 @@ public class CharPanel extends JPanel {
 
 		tFSchadensboni = new JTextField();
 		tFSchadensboni.setEditable(false);
-		tFSchadensboni.setBounds(118, 400, 47, 20);
+		tFSchadensboni.setBounds(120, 400, 47, 20);
 		panel.add(tFSchadensboni);
 
 		JLabel lblSchadensboni = new JLabel("Schadensboni:");
 		lblSchadensboni.setBounds(12, 403, 90, 14);
 		panel.add(lblSchadensboni);
-
-		tF_LP = new JTextField();
-		tF_LP.setColumns(10);
-		tF_LP.setBounds(118, 11, 47, 20);
-		panel.add(tF_LP);
+		
+		JSpinner spKP = new JSpinner();
+		spKP.setBounds(120, 133, 47, 20);
+		spKP.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				if ((int) spKP.getValue() < 0) {
+					spKP.setValue(0);
+				} else {
+					if ((int) spKP.getValue() > 20) {
+						spKP.setValue(20);
+					}
+				}
+			}
+		});
+		panel.add(spKP);
+		
+		JSpinner spErfolge = new JSpinner();
+		spErfolge.setBounds(120, 159, 47, 20);
+		spErfolge.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				if ((int) spErfolge.getValue() < 0) {
+					spErfolge.setValue(0);
+				} else {
+					if ((int) spErfolge.getValue() > 999) {
+						spErfolge.setValue(999);
+					}
+				}
+			}
+		});
+		panel.add(spErfolge);
+		
+		JSpinner spSonstige = new JSpinner();
+		spSonstige.setBounds(120, 317, 47, 20);
+		spSonstige.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				if ((int) spSonstige.getValue() < -99) {
+					spSonstige.setValue(-99);
+				} else {
+					if ((int) spSonstige.getValue() > 99) {
+						spSonstige.setValue(99);
+					}
+				}
+			}
+		});
+		panel.add(spSonstige);
+		
+		JSpinner spLP = new JSpinner();
+		spLP.setBounds(120, 11, 47, 20);
+		spLP.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				if ((int) spLP.getValue() < 0) {
+					spLP.setValue(0);
+				} else {
+					if ((int) spLP.getValue() > 999) {
+						spLP.setValue(999);
+					}
+				}
+			}
+		});
+		panel.add(spLP);
 
 		add(panel);
 	}
