@@ -103,6 +103,11 @@ public class CharPanel extends JPanel {
 		panel.add(lblWundgrad);
 
 		JButton btnInit = new JButton("Init");
+		btnInit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tFfinalinit.setText("" + (1 + charinit + (int) (Math.random() * 10)));
+			}
+		});
 		btnInit.setBounds(19, 485, 86, 20);
 		panel.add(btnInit);
 
@@ -367,7 +372,7 @@ public class CharPanel extends JPanel {
 				tFAngriffboni.setText(" " + (waffenfertigkeitsbonus + (int) spKP.getValue()
 						+ Integer.parseInt(tfKampfmodiAngriff.getText())
 						+ Integer.parseInt(tFfinalAngriffManöver.getText()) + (int) spSonstigesAngriff.getValue()
-						- (4 * (int) spMehrfachaktion.getValue())));
+						- (int) spErfolge.getValue() - (4 * (int) spMehrfachaktion.getValue())));
 				tFSchadensboni.setText("" + (Integer.parseInt(tfKampfmodiSchaden.getText()) + stärkebonus
 						+ (int) spErfolge.getValue() - Integer.parseInt(tFRuestung.getText())
 						+ Integer.parseInt(tFfinalSchadenManöver.getText())));
