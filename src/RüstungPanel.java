@@ -22,10 +22,8 @@ public class RüstungPanel {
 			{ 1, 0, 1 }, { 12, -4, 6 }, { 2, -1, 1 }, { 8, -3, 4 } };
 	private JTextField tFRS;
 	private JTextField tFBL;
-	private JTextField tFMS;
 	private JSpinner spRS;
 	private JSpinner spBL;
-	private JSpinner spMS;
 	private static int stärke;
 
 	public static int[] initRüstungPanel(int stärkebonus) {
@@ -49,7 +47,6 @@ public class RüstungPanel {
 		frmRstungsauswahl = new JFrame();
 		tFRS = new JTextField();
 		tFBL = new JTextField();
-		tFMS = new JTextField();
 		initpanelcompents();
 
 		JComboBox cBAuswahl = new JComboBox(new String[] { "Keine", "Bänderpanzer", "Bronzepanzer", "Fellrüstung",
@@ -78,7 +75,7 @@ public class RüstungPanel {
 			}
 
 		});
-		cBAuswahl.setBounds(60, 36, 146, 20);
+		cBAuswahl.setBounds(60, 46, 146, 20);
 		frmRstungsauswahl.getContentPane().add(cBAuswahl);
 
 		JButton btnNewButton = new JButton("Fertig");
@@ -87,11 +84,11 @@ public class RüstungPanel {
 				fertig();
 			}
 		});
-		btnNewButton.setBounds(84, 160, 89, 23);
+		btnNewButton.setBounds(84, 154, 89, 23);
 		frmRstungsauswahl.getContentPane().add(btnNewButton);
 
 		spRS = new JSpinner();
-		spRS.setBounds(191, 67, 29, 20);
+		spRS.setBounds(191, 82, 29, 20);
 		spRS.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if ((int) spRS.getValue() < -10) {
@@ -106,7 +103,7 @@ public class RüstungPanel {
 		frmRstungsauswahl.getContentPane().add(spRS);
 
 		spBL = new JSpinner();
-		spBL.setBounds(191, 98, 29, 20);
+		spBL.setBounds(191, 118, 29, 20);
 		spBL.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if ((int) spBL.getValue() < -10) {
@@ -120,30 +117,13 @@ public class RüstungPanel {
 		});
 		frmRstungsauswahl.getContentPane().add(spBL);
 
-		spMS = new JSpinner();
-		spMS.setBounds(191, 129, 29, 20);
-		spMS.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent arg0) {
-				if ((int) spMS.getValue() < -10) {
-					spMS.setValue(-10);
-				} else {
-					if ((int) spMS.getValue() > 10) {
-						spMS.setValue(10);
-					}
-				}
-			}
-		});
-		frmRstungsauswahl.getContentPane().add(spMS);
-
 	}
 
 	private void printRüstung(int select) {
 		tFRS.setText(rüstungswerte[select][0] + "");
 		tFBL.setText(rüstungswerte[select][1] + "");
-		tFMS.setText(rüstungswerte[select][2] + "");
 		spRS.setValue(0);
 		spBL.setValue(0);
-		spMS.setValue(0);
 
 	}
 
@@ -163,52 +143,36 @@ public class RüstungPanel {
 		frmRstungsauswahl.getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Welche Rüstung wird getragen?");
-		lblNewLabel.setBounds(36, 11, 184, 14);
+		lblNewLabel.setBounds(36, 16, 184, 14);
 		frmRstungsauswahl.getContentPane().add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Rüstungsschutz");
-		lblNewLabel_1.setBounds(25, 70, 89, 14);
+		lblNewLabel_1.setBounds(25, 85, 89, 14);
 		frmRstungsauswahl.getContentPane().add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Belastung");
-		lblNewLabel_2.setBounds(25, 101, 89, 14);
+		lblNewLabel_2.setBounds(25, 121, 89, 14);
 		frmRstungsauswahl.getContentPane().add(lblNewLabel_2);
 
-		JLabel lblNewLabel_3 = new JLabel("Mindeststärke");
-		lblNewLabel_3.setBounds(25, 132, 89, 14);
-		frmRstungsauswahl.getContentPane().add(lblNewLabel_3);
-
 		JLabel lbl1 = new JLabel("+");
-		lbl1.setBounds(172, 70, 21, 14);
+		lbl1.setBounds(172, 85, 21, 14);
 		frmRstungsauswahl.getContentPane().add(lbl1);
 
 		JLabel lbl2 = new JLabel("+");
-		lbl2.setBounds(172, 101, 21, 14);
+		lbl2.setBounds(172, 121, 21, 14);
 		frmRstungsauswahl.getContentPane().add(lbl2);
 
-		JLabel lbl3 = new JLabel("+");
-		lbl3.setBounds(172, 132, 21, 14);
-		frmRstungsauswahl.getContentPane().add(lbl3);
-
-		tFMS.setColumns(10);
-		tFMS.setBounds(111, 129, 51, 20);
-		tFMS.setBackground(Color.WHITE);
-		tFMS.setEditable(false);
-		frmRstungsauswahl.getContentPane().add(tFMS);
-
 		tFBL.setColumns(10);
-		tFBL.setBounds(111, 98, 51, 20);
+		tFBL.setBounds(111, 118, 51, 20);
 		tFBL.setBackground(Color.WHITE);
 		tFBL.setEditable(false);
 		frmRstungsauswahl.getContentPane().add(tFBL);
 
-		tFRS.setBounds(111, 67, 51, 20);
+		tFRS.setBounds(111, 82, 51, 20);
 		tFRS.setBackground(Color.WHITE);
 		tFRS.setEditable(false);
 		tFRS.setColumns(10);
 		frmRstungsauswahl.getContentPane().add(tFRS);
-
-		tFMS.setText("0");
 		tFBL.setText("0");
 		tFRS.setText("0");
 
