@@ -75,7 +75,7 @@ public class RüstungPanel {
 			}
 
 		});
-		cBAuswahl.setBounds(60, 46, 146, 20);
+		cBAuswahl.setBounds(35, 46, 197, 20);
 		frmRstungsauswahl.getContentPane().add(cBAuswahl);
 
 		JButton btnNewButton = new JButton("Fertig");
