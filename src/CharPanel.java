@@ -300,7 +300,8 @@ public class CharPanel extends JPanel {
 				tFAngriffboni.setText(" " + (waffenfertigkeitsbonus + (int) spKP.getValue()
 						+ Integer.parseInt(tfKampfmodiAngriff.getText())
 						+ Integer.parseInt(tFfinalAngriffManöver.getText()) + (int) spSonstigesAngriff.getValue()
-						- (int) spErfolge.getValue() - (4 * (int) spMehrfachaktion.getValue())));
+						- (int) spErfolge.getValue() + Integer.parseInt(tFBelastung.getText())
+						- (4 * (int) spMehrfachaktion.getValue())));
 				tFSchadensboni.setText("" + (Integer.parseInt(tfKampfmodiSchaden.getText()) + stärkebonus
 						+ (int) spErfolge.getValue() + Integer.parseInt(tFfinalSchadenManöver.getText())));
 				tFSchadensschutz.setText("" + Integer.parseInt(tFRüstungsschutz.getText()));
