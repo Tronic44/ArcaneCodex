@@ -37,12 +37,12 @@ public class gui extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (line < dim.getWidth() - 200 && spalte < dim.getHeight() - 500) {
-					addpanel();
+					addpanel(frame);
 				} else {
 					spalte += 520;
 					line = 0;
 					if (spalte < dim.getHeight() - 500) {
-						addpanel();
+						addpanel(frame);
 					}
 
 				}
@@ -53,8 +53,8 @@ public class gui extends JFrame {
 		pack();
 	}
 
-	private void addpanel() {
-		CharPanel panel = new CharPanel();
+	private void addpanel(JFrame frame) {
+		CharPanel panel = new CharPanel(frame);
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBounds(line, spalte, 173, 516);
 		panel.setLayout(null);

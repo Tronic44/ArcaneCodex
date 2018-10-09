@@ -9,9 +9,8 @@
 		"Stärkebonus":"0",
 		"Willenskraftbonus":"0",
 		"Intelligenzbonus":"0",
-		"Schulboni":"0",
 		"Waffenfertigkeitsbonus":{
-			"Äxte":"0",
+			"Äxte":"2",
 			"Dolche":"0",
 			"Fechtwaffen":"0",
 			"Improvisierte Waffen":"0",
@@ -30,6 +29,6 @@
 			"Schwarzpulver":"0",
 			"Blind Kämpfen":"0"
 		}
+	},
+	"Namen": ["Template","Test","test2!"]
 	}
-	"Einträge": ["Template"]
-}
