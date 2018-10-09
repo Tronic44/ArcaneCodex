@@ -25,7 +25,7 @@ public class CharPanel extends JPanel {
 	private JTextField tFfinalAngriffManöver;
 	private JTextField tFSchockresistenz;
 	private JTextField tFGeistigerWiderstand;
-	private JTextField Verteidigungswert;
+	private JTextField tFVerteidigungswert;
 	private JTextField tFAngriffboni;
 	private JTextField tFSchadensboni;
 	private JTextField tFfinalSchadenManöver;
@@ -83,7 +83,7 @@ public class CharPanel extends JPanel {
 		tfKampfmodiSchaden = new JTextField();
 		tFSchockresistenz = new JTextField();
 		tFGeistigerWiderstand = new JTextField();
-		Verteidigungswert = new JTextField();
+		tFVerteidigungswert = new JTextField();
 		tFAngriffboni = new JTextField();
 		tFSchadensboni = new JTextField();
 		tFRüstungsschutz = new JTextField();
@@ -123,27 +123,27 @@ public class CharPanel extends JPanel {
 		panel.add(btnInit);
 
 		JButton btnKampfmodi = new JButton("Kampfmodi");
-		btnKampfmodi.setBounds(7, 239, 103, 23);
+		btnKampfmodi.setBounds(7, 210, 103, 23);
 		panel.add(btnKampfmodi);
 
 		JButton btnManvöer = new JButton("Manöver");
-		btnManvöer.setBounds(7, 271, 103, 23);
+		btnManvöer.setBounds(7, 240, 103, 23);
 		panel.add(btnManvöer);
 
 //		JComboBox<String> cBWundgrad = new JComboBox<String>(new String[] { "Gesund", "Angeschlagen", "Verletzt",
 		JComboBox cBWundgrad = new JComboBox(new String[] { "Gesund", "Angeschlagen", "Verletzt",
 
 				"Verwundet", "Schwer verwundet", "Außer Gefecht" });
-		cBWundgrad.setBounds(70, 99, 95, 20);
+		cBWundgrad.setBounds(70, 87, 95, 20);
 		panel.add(cBWundgrad);
 
 //		JComboBox<String> cBKampfart = new JComboBox<String>(
 		JComboBox cBKampfart = new JComboBox(new String[] { "Angreifen", "Abblocken", "Parieren", "Ausweichen" });
-		cBKampfart.setBounds(70, 127, 95, 20);
+		cBKampfart.setBounds(70, 110, 95, 20);
 		panel.add(cBKampfart);
 
 		JButton btnWaffe = new JButton("Waffe");
-		btnWaffe.setBounds(7, 305, 103, 23);
+		btnWaffe.setBounds(7, 270, 103, 23);
 		panel.add(btnWaffe);
 
 		JButton btnRstung = new JButton("Rüstung");
@@ -152,12 +152,12 @@ public class CharPanel extends JPanel {
 				RüstungPanel.initRüstungPanel(stärkebonus);
 			}
 		});
-		btnRstung.setBounds(8, 67, 103, 23);
+		btnRstung.setBounds(8, 60, 103, 23);
 		panel.add(btnRstung);
 
 		JSpinner spMehrfachaktion = new JSpinner();
 		spMehrfachaktion.setToolTipText("Anzahl der Mehrfachaktionen");
-		spMehrfachaktion.setBounds(120, 208, 47, 20);
+		spMehrfachaktion.setBounds(120, 185, 47, 20);
 		spMehrfachaktion.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if ((int) spMehrfachaktion.getValue() < 0) {
@@ -173,7 +173,7 @@ public class CharPanel extends JPanel {
 
 		JSpinner spKP = new JSpinner();
 		spKP.setToolTipText("KP");
-		spKP.setBounds(120, 155, 47, 20);
+		spKP.setBounds(120, 138, 47, 20);
 		spKP.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if ((int) spKP.getValue() < 0) {
@@ -189,7 +189,7 @@ public class CharPanel extends JPanel {
 
 		JSpinner spErfolge = new JSpinner();
 		spErfolge.setToolTipText("Erfolge");
-		spErfolge.setBounds(120, 181, 47, 20);
+		spErfolge.setBounds(120, 162, 47, 20);
 		spErfolge.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if ((int) spErfolge.getValue() < 0) {
@@ -204,7 +204,7 @@ public class CharPanel extends JPanel {
 		panel.add(spErfolge);
 
 		JSpinner spSonstigesSchaden = new JSpinner();
-		spSonstigesSchaden.setBounds(130, 335, 37, 20);
+		spSonstigesSchaden.setBounds(130, 297, 37, 20);
 		spSonstigesSchaden.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if ((int) spSonstigesSchaden.getValue() < -99) {
@@ -235,7 +235,7 @@ public class CharPanel extends JPanel {
 		panel.add(spLP);
 
 		JSpinner spSonstigesAngriff = new JSpinner();
-		spSonstigesAngriff.setBounds(92, 335, 37, 20);
+		spSonstigesAngriff.setBounds(92, 297, 37, 20);
 		spSonstigesAngriff.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if ((int) spSonstigesAngriff.getValue() < -99) {
@@ -248,6 +248,50 @@ public class CharPanel extends JPanel {
 			}
 		});
 		panel.add(spSonstigesAngriff);
+		
+		JSpinner spVW = new JSpinner();
+		spVW.setBounds(15, 430, 37, 20);
+		spVW.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				if ((int) spVW.getValue() < -99) {
+					spVW.setValue(-99);
+				} else {
+					if ((int) spVW.getValue() > 99) {
+						spVW.setValue(99);
+					}
+				}
+			}
+		});
+		panel.add(spVW);
+		
+		JSpinner spSR = new JSpinner();
+		spSR.setBounds(67, 430, 37, 20);
+		spSR.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				if ((int) spSR.getValue() < -99) {
+					spSR.setValue(-99);
+				} else {
+					if ((int) spSR.getValue() > 99) {
+						spSR.setValue(99);
+					}
+				}
+			}
+		});
+		panel.add(spSR);
+		
+		JSpinner spGW = new JSpinner();
+		spGW.setBounds(119, 430, 37, 20);
+		spGW.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				if ((int) spGW.getValue() < -99) {
+					spGW.setValue(-99);
+				} else {
+					if ((int) spGW.getValue() > 99) {
+						spGW.setValue(99);
+					}
+				}
+			}
+		});
 
 		JButton btnBerechne = new JButton("Berechne");
 		btnBerechne.setToolTipText("Berechnet die unten Stehenden Werte");
@@ -260,24 +304,30 @@ public class CharPanel extends JPanel {
 				tFSchadensboni.setText("" + (Integer.parseInt(tfKampfmodiSchaden.getText()) + stärkebonus
 						+ (int) spErfolge.getValue() + Integer.parseInt(tFfinalSchadenManöver.getText())));
 				tFSchadensschutz.setText("" + Integer.parseInt(tFRüstungsschutz.getText()));
+				tFVerteidigungswert.setText(""+(14+geschicklichkeitsbonus+wahrnehmnungsbonus+(int) spVW.getValue()));
+				tFGeistigerWiderstand.setText(""+(14+konstitutionsbonus+stärkebonus+(int) spGW.getValue()));
+				tFSchockresistenz.setText(""+(14+willenskraftbonus+intelligenzbonus+(int) spSR.getValue()));
 			}
 		});
-		btnBerechne.setBounds(23, 363, 127, 23);
+		btnBerechne.setBounds(23, 320, 127, 23);
 		panel.add(btnBerechne);
 
 		JLabel lblSchadensminderung = new JLabel("Schadensminderung:");
-		lblSchadensminderung.setBounds(8, 432, 132, 14);
+		lblSchadensminderung.setBounds(7, 390, 132, 14);
 		panel.add(lblSchadensminderung);
 
 		tFSchadensschutz = new JTextField();
 		tFSchadensschutz.setToolTipText("Die Verminderung des Schadens ( Rüstungsschutz)");
 		tFSchadensschutz.setEditable(false);
 		tFSchadensschutz.setBackground(Color.WHITE);
-		tFSchadensschutz.setBounds(130, 429, 37, 20);
+		tFSchadensschutz.setBounds(129, 387, 37, 20);
 		panel.add(tFSchadensschutz);
+		
+
+		panel.add(spGW);
 
 		// Das ausklammern, um das Panel im Editor zu bearbeiten
-		add(panel);
+//		add(panel);
 	}
 
 	protected static void setRüstung(int[] rs) {
@@ -295,7 +345,7 @@ public class CharPanel extends JPanel {
 		panel.setLayout(null);
 
 		JLabel lblWundgrad = new JLabel("Wundgrad");
-		lblWundgrad.setBounds(7, 102, 65, 14);
+		lblWundgrad.setBounds(7, 90, 65, 14);
 		panel.add(lblWundgrad);
 
 		tFfinalinit.setBackground(Color.WHITE);
@@ -304,80 +354,80 @@ public class CharPanel extends JPanel {
 		panel.add(tFfinalinit);
 
 		JLabel lblKp = new JLabel("KP");
-		lblKp.setBounds(7, 158, 33, 14);
+		lblKp.setBounds(7, 141, 33, 14);
 		panel.add(lblKp);
 
 		tFfinalAngriffManöver.setText("0");
 		tFfinalAngriffManöver.setBackground(Color.WHITE);
 		tFfinalAngriffManöver.setEditable(false);
 		tFfinalAngriffManöver.setColumns(1);
-		tFfinalAngriffManöver.setBounds(120, 272, 20, 20);
+		tFfinalAngriffManöver.setBounds(120, 241, 20, 20);
 		panel.add(tFfinalAngriffManöver);
 
 		JLabel lblErfolge = new JLabel("Erfolge");
-		lblErfolge.setBounds(7, 184, 47, 14);
+		lblErfolge.setBounds(7, 165, 47, 14);
 		panel.add(lblErfolge);
 
 		JLabel lblKampfart = new JLabel("Kampfart");
-		lblKampfart.setBounds(7, 130, 65, 14);
+		lblKampfart.setBounds(7, 113, 65, 14);
 		panel.add(lblKampfart);
 
 		JLabel lblMehrfachaktion = new JLabel("Mehrfachaktionen");
-		lblMehrfachaktion.setBounds(7, 208, 113, 20);
+		lblMehrfachaktion.setBounds(7, 185, 113, 20);
 		panel.add(lblMehrfachaktion);
 
 		JLabel lblSchockresistenz = new JLabel("SR");
 		lblSchockresistenz.setToolTipText("Schockresistenz");
-		lblSchockresistenz.setBounds(61, 453, 20, 20);
+		lblSchockresistenz.setBounds(76, 410, 20, 20);
 		panel.add(lblSchockresistenz);
 
 		JLabel lblGeistigerWiderstand = new JLabel("GW");
 		lblGeistigerWiderstand.setToolTipText("Geistiger Widerstand");
-		lblGeistigerWiderstand.setBounds(115, 453, 20, 20);
+		lblGeistigerWiderstand.setBounds(124, 410, 20, 20);
 		panel.add(lblGeistigerWiderstand);
 
 		tFSchockresistenz.setBackground(Color.WHITE);
 		tFSchockresistenz.setEditable(false);
-		tFSchockresistenz.setBounds(88, 453, 20, 20);
+		tFSchockresistenz.setBounds(70, 453, 30, 20);
 		panel.add(tFSchockresistenz);
 
 		tFGeistigerWiderstand.setBackground(Color.WHITE);
 		tFGeistigerWiderstand.setEditable(false);
 		tFGeistigerWiderstand.setColumns(10);
-		tFGeistigerWiderstand.setBounds(142, 453, 20, 20);
+		tFGeistigerWiderstand.setBounds(120, 453, 30, 20);
 		panel.add(tFGeistigerWiderstand);
 
-		Verteidigungswert.setBackground(Color.WHITE);
-		Verteidigungswert.setEditable(false);
-		Verteidigungswert.setColumns(10);
-		Verteidigungswert.setBounds(34, 453, 20, 20);
-		panel.add(Verteidigungswert);
+		tFVerteidigungswert.setBackground(Color.WHITE);
+		tFVerteidigungswert.setEditable(false);
+		tFVerteidigungswert.setColumns(10);
+		tFVerteidigungswert.setBounds(20, 453, 30, 20);
+		panel.add(tFVerteidigungswert);
 
 		JLabel lblVerteidigungswert = new JLabel("VW");
 		lblVerteidigungswert.setToolTipText("Verteidigungswert");
-		lblVerteidigungswert.setBounds(7, 453, 20, 20);
+		lblVerteidigungswert.setBounds(28, 410, 20, 20);
 		panel.add(lblVerteidigungswert);
 
 		tFAngriffboni.setBackground(Color.WHITE);
 		tFAngriffboni.setEditable(false);
-		tFAngriffboni.setBounds(92, 392, 37, 20);
+		tFAngriffboni.setBounds(91, 347, 37, 20);
 		panel.add(tFAngriffboni);
 
 		tFSchadensboni.setBackground(Color.WHITE);
 		tFSchadensboni.setEditable(false);
-		tFSchadensboni.setBounds(130, 410, 37, 20);
+		tFSchadensboni.setBounds(129, 367, 37, 20);
 		panel.add(tFSchadensboni);
 
 		JLabel lblSonstiges = new JLabel("Sonstiges");
-		lblSonstiges.setBounds(8, 338, 77, 14);
+		lblSonstiges.setBounds(8, 300, 77, 14);
 		panel.add(lblSonstiges);
 
 		JLabel lblAngriffboni = new JLabel("Angriffsboni:");
-		lblAngriffboni.setBounds(8, 395, 93, 14);
+		lblAngriffboni.setBounds(7, 350, 93, 14);
 		panel.add(lblAngriffboni);
 
 		JLabel lblSchadensboni = new JLabel("Schadensboni:");
-		lblSchadensboni.setBounds(8, 413, 93, 14);
+		lblSchadensboni.setBounds(7, 370, 93, 14);
 		panel.add(lblSchadensboni);
 
 		JLabel lblLebenspunkte = new JLabel("Lebenspunkte");
@@ -388,49 +438,49 @@ public class CharPanel extends JPanel {
 		tFfinalSchadenManöver.setEditable(false);
 		tFfinalSchadenManöver.setColumns(1);
 		tFfinalSchadenManöver.setBackground(Color.WHITE);
-		tFfinalSchadenManöver.setBounds(144, 272, 20, 20);
+		tFfinalSchadenManöver.setBounds(144, 241, 20, 20);
 		panel.add(tFfinalSchadenManöver);
 
 		tFWaffenAngriff.setText("0");
 		tFWaffenAngriff.setEditable(false);
 		tFWaffenAngriff.setColumns(1);
 		tFWaffenAngriff.setBackground(Color.WHITE);
-		tFWaffenAngriff.setBounds(120, 306, 20, 20);
+		tFWaffenAngriff.setBounds(120, 271, 20, 20);
 		panel.add(tFWaffenAngriff);
 
 		tFWaffenSchaden.setText("0");
 		tFWaffenSchaden.setEditable(false);
 		tFWaffenSchaden.setColumns(1);
 		tFWaffenSchaden.setBackground(Color.WHITE);
-		tFWaffenSchaden.setBounds(144, 306, 20, 20);
+		tFWaffenSchaden.setBounds(144, 271, 20, 20);
 		panel.add(tFWaffenSchaden);
 
 		tfKampfmodiAngriff.setText("0");
 		tfKampfmodiAngriff.setEditable(false);
 		tfKampfmodiAngriff.setColumns(1);
 		tfKampfmodiAngriff.setBackground(Color.WHITE);
-		tfKampfmodiAngriff.setBounds(120, 240, 20, 20);
+		tfKampfmodiAngriff.setBounds(120, 211, 20, 20);
 		panel.add(tfKampfmodiAngriff);
 
 		tfKampfmodiSchaden.setText("0");
 		tfKampfmodiSchaden.setEditable(false);
 		tfKampfmodiSchaden.setColumns(1);
 		tfKampfmodiSchaden.setBackground(Color.WHITE);
-		tfKampfmodiSchaden.setBounds(144, 240, 20, 20);
+		tfKampfmodiSchaden.setBounds(144, 211, 20, 20);
 		panel.add(tfKampfmodiSchaden);
 
 		tFBelastung.setText("0");
 		tFBelastung.setEditable(false);
 		tFBelastung.setColumns(1);
 		tFBelastung.setBackground(Color.WHITE);
-		tFBelastung.setBounds(144, 68, 20, 20);
+		tFBelastung.setBounds(144, 61, 20, 20);
 		panel.add(tFBelastung);
 
 		tFRüstungsschutz.setText("0");
 		tFRüstungsschutz.setEditable(false);
 		tFRüstungsschutz.setColumns(1);
 		tFRüstungsschutz.setBackground(Color.WHITE);
-		tFRüstungsschutz.setBounds(120, 68, 20, 20);
+		tFRüstungsschutz.setBounds(120, 61, 20, 20);
 		panel.add(tFRüstungsschutz);
 
 		tFfinalinit.setToolTipText("Initative");
@@ -442,7 +492,7 @@ public class CharPanel extends JPanel {
 		tfKampfmodiSchaden.setToolTipText("Schadensbonus durch den Kampfmodus");
 		tFSchockresistenz.setToolTipText("Schockresistenz");
 		tFGeistigerWiderstand.setToolTipText("Geistiger Widerstand");
-		Verteidigungswert.setToolTipText("Verteidigungswert");
+		tFVerteidigungswert.setToolTipText("Verteidigungswert");
 		tFAngriffboni.setToolTipText("Der Bonus für dein Angriffswurf");
 		tFSchadensboni.setToolTipText("Der Bonus für den Schadenswurf");
 		tFRüstungsschutz.setToolTipText("Rüstungsschutz");
