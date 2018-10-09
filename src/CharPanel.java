@@ -23,7 +23,6 @@ public class CharPanel extends JPanel {
 	JPanel panel;
 	private JTextField tFfinalinit;
 	private JTextField tFfinalAngriffManöver;
-	private JTextField tFRuestung;
 	private JTextField tFSchockresistenz;
 	private JTextField tFGeistigerWiderstand;
 	private JTextField Verteidigungswert;
@@ -46,9 +45,11 @@ public class CharPanel extends JPanel {
 	private int intelligenzbonus;
 	private int[] waffenfertigkeitsboni;
 	private int waffenfertigkeitsbonus;
+	private static int[] rüstung;
+	private static JTextField tFRüstungsschutz;
+	private static JTextField tFBelastung;
 
-
-	private void initChar(String player,JFrame frame) {
+	private void initChar(String player, JFrame frame) {
 		try {
 			charinit = Reader.getCharinit(player);
 			kampftechnikeninitbonus = Reader.getKampftechnikeninitbonus(player);
@@ -73,7 +74,6 @@ public class CharPanel extends JPanel {
 		panel = new JPanel();
 		tFfinalinit = new JTextField();
 		tFfinalAngriffManöver = new JTextField();
-		tFRuestung = new JTextField();
 		tFfinalSchadenManöver = new JTextField();
 		tFWaffenAngriff = new JTextField();
 		tFWaffenSchaden = new JTextField();
@@ -84,6 +84,8 @@ public class CharPanel extends JPanel {
 		Verteidigungswert = new JTextField();
 		tFAngriffboni = new JTextField();
 		tFSchadensboni = new JTextField();
+		tFRüstungsschutz = new JTextField();
+		tFBelastung = new JTextField();
 		initpanelcompents();
 
 //		JComboBox<String> cBchangeChar = new JComboBox<String>(Reader.getList());
@@ -97,11 +99,11 @@ public class CharPanel extends JPanel {
 				}
 				if (cBCharselect == null) {
 					cBCharselect = cBchangeChar.getSelectedItem().toString();
-					initChar(cBchangeChar.getSelectedItem().toString(),frame);
+					initChar(cBchangeChar.getSelectedItem().toString(), frame);
 				}
 				if (!cBchangeChar.getSelectedItem().toString().equals(cBCharselect)) {
 					cBCharselect = cBchangeChar.getSelectedItem().toString();
-					initChar(cBchangeChar.getSelectedItem().toString(),frame);
+					initChar(cBchangeChar.getSelectedItem().toString(), frame);
 				}
 			}
 		});
@@ -111,7 +113,7 @@ public class CharPanel extends JPanel {
 		JButton btnInit = new JButton("Init");
 		btnInit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tFfinalinit.setText("" + (1 + charinit + (int) (Math.random() * 10)));
+				tFfinalinit.setText("" + (1 + charinit - Integer.parseInt(tFBelastung.getText()) + (int) (Math.random() * 10)));
 			}
 		});
 		btnInit.setBounds(19, 485, 86, 20);
@@ -142,6 +144,11 @@ public class CharPanel extends JPanel {
 		panel.add(btnWaffe);
 
 		JButton btnRstung = new JButton("Rüstung");
+		btnRstung.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				RüstungPanel.initRüstungPanel(stärkebonus);
+			}
+		});
 		btnRstung.setBounds(8, 67, 103, 23);
 		panel.add(btnRstung);
 
@@ -243,7 +250,7 @@ public class CharPanel extends JPanel {
 						+ Integer.parseInt(tFfinalAngriffManöver.getText()) + (int) spSonstigesAngriff.getValue()
 						- (int) spErfolge.getValue() - (4 * (int) spMehrfachaktion.getValue())));
 				tFSchadensboni.setText("" + (Integer.parseInt(tfKampfmodiSchaden.getText()) + stärkebonus
-						+ (int) spErfolge.getValue() - Integer.parseInt(tFRuestung.getText())
+						+ (int) spErfolge.getValue() - Integer.parseInt(tFRüstungsschutz.getText())
 						+ Integer.parseInt(tFfinalSchadenManöver.getText())));
 			}
 		});
@@ -252,6 +259,13 @@ public class CharPanel extends JPanel {
 
 		// Das ausklammern, um das Panel im Editor zu bearbeiten
 		add(panel);
+	}
+
+	protected static void setRüstung(int[] rs) {
+		rüstung = rs;
+		tFRüstungsschutz.setText(rüstung[0]+"");
+		tFBelastung.setText(rüstung[1]+"");
+
 	}
 
 	private void initpanelcompents() {
@@ -288,12 +302,6 @@ public class CharPanel extends JPanel {
 		JLabel lblKampfart = new JLabel("Kampfart");
 		lblKampfart.setBounds(7, 130, 65, 14);
 		panel.add(lblKampfart);
-
-		tFRuestung.setText("0");
-		tFRuestung.setBackground(Color.WHITE);
-		tFRuestung.setEditable(false);
-		tFRuestung.setBounds(120, 68, 47, 20);
-		panel.add(tFRuestung);
 
 		JLabel lblMehrfachaktion = new JLabel("Mehrfachaktionen");
 		lblMehrfachaktion.setBounds(7, 208, 113, 20);
@@ -388,6 +396,19 @@ public class CharPanel extends JPanel {
 		tfKampfmodiSchaden.setBackground(Color.WHITE);
 		tfKampfmodiSchaden.setBounds(144, 240, 20, 20);
 		panel.add(tfKampfmodiSchaden);
-	}
 
+		tFBelastung.setText("0");
+		tFBelastung.setEditable(false);
+		tFBelastung.setColumns(1);
+		tFBelastung.setBackground(Color.WHITE);
+		tFBelastung.setBounds(144, 68, 20, 20);
+		panel.add(tFBelastung);
+
+		tFRüstungsschutz.setText("0");
+		tFRüstungsschutz.setEditable(false);
+		tFRüstungsschutz.setColumns(1);
+		tFRüstungsschutz.setBackground(Color.WHITE);
+		tFRüstungsschutz.setBounds(120, 68, 20, 20);
+		panel.add(tFRüstungsschutz);
+	}
 }
