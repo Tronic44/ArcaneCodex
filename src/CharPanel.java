@@ -113,7 +113,7 @@ public class CharPanel extends JPanel {
 		JButton btnInit = new JButton("Init");
 		btnInit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tFfinalinit.setText("" + (1 + charinit - Integer.parseInt(tFBelastung.getText()) + (int) (Math.random() * 10)));
+				tFfinalinit.setText("" + (1 + charinit + Integer.parseInt(tFBelastung.getText()) + (int) (Math.random() * 10)));
 			}
 		});
 		btnInit.setBounds(19, 485, 86, 20);
