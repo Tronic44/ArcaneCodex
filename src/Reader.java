@@ -127,6 +127,8 @@ public class Reader {
 			waffenlist[15] = chars.getJSONObject(player).getJSONObject("Waffenfertigkeitsbonus").getInt("Schleuder");
 			waffenlist[16] = chars.getJSONObject(player).getJSONObject("Waffenfertigkeitsbonus").getInt("Schwarzpulver");
 			waffenlist[17] = chars.getJSONObject(player).getJSONObject("Waffenfertigkeitsbonus").getInt("Blind Kämpfen");
+			waffenlist[18] = chars.getJSONObject(player).getJSONObject("Waffenfertigkeitsbonus").getInt("Belagerungsgeräte");
+			waffenlist[19] = chars.getJSONObject(player).getJSONObject("Waffenfertigkeitsbonus").getInt("Geschütze");
 			return waffenlist;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -15,6 +15,7 @@ import org.json.JSONException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JSeparator;
 
 @SuppressWarnings("serial")
 public class CharPanel extends JPanel {
@@ -224,6 +225,10 @@ public class CharPanel extends JPanel {
 		tFWundgrad.setBounds(70, 87, 95, 20);
 		panel.add(tFWundgrad);
 		tFWundgrad.setColumns(10);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(0, 196, 183, 1);
+		panel.add(separator);
 
 		// Das ausklammern, um das Panel im Editor zu bearbeiten
 		add(panel);
