@@ -83,20 +83,25 @@ public class gui extends JFrame {
 							}
 						}
 					}
+					for (int k : inits) {
+						System.out.print(k + " ");
+					}
+					System.out.println();
 					int maxinit = inits[0];
-					int lastmax = -100;
+					int lastmax = 1000000000;
 					int ort = 0;
 					int x = 0;
-					int y = 0;
+					int y = 1;
 					for (int all = 0; all < inits.length; all++) {
 						for (int k = 0; k < inits.length; k++) {
-							if (ort != k && inits[k] > maxinit && inits[k] > lastmax) {
+							if (inits[k] > maxinit && inits[k] < lastmax) {
 								maxinit = inits[k];
 								ort = k;
 							}
 						}
 						System.out.println(ort + " " + maxinit);
 						lastmax = maxinit;
+						maxinit = -100;
 						panellist.get(ort).setBounds(x, y, 173, 516);
 						x += 174;
 						if (x > dim.getWidth() - 300) {
