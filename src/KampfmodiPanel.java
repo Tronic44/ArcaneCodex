@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
-public class RüstungPanel {
+public class KampfmodiPanel {
 
 	JFrame frmRstungsauswahl;
 	private int cBRüsungselect;
@@ -26,7 +26,7 @@ public class RüstungPanel {
 	private JSpinner spBL;
 	private static int stärke;
 
-	public RüstungPanel(int stärkebonus, int index) {
+	public KampfmodiPanel(int stärkebonus, int index) {
 		stärke = stärkebonus + 5;
 		frmRstungsauswahl = new JFrame();
 		tFRS = new JTextField();
