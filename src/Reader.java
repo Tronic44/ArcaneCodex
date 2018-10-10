@@ -151,4 +151,30 @@ public class Reader {
 		return null;
 	}
 
+	public static int getVerteidigungswertbonus(String player) {
+		try {
+			return chars.getJSONObject(player).getInt("Verteidigungswertbonus");
+		} catch (Exception e) {
+			throw new JSONException("Da stimmt was in der Json nicht bei: " + player + " Verteidigungswertbonus");
+		}
+	}
+
+	public static int getSchockresistenzbonus(String player) {
+		try {
+			return chars.getJSONObject(player).getInt("Schockresistenzbonus");
+		} catch (Exception e) {
+			throw new JSONException("Da stimmt was in der Json nicht bei: " + player + " Schockresistenzbonus");
+		}
+	}
+
+	public static int getGeistigerWiderstandbonus(String player) {
+		try {
+			return chars.getJSONObject(player).getInt("GeistigerWiderstandbonus");
+		} catch (Exception e) {
+			throw new JSONException("Da stimmt was in der Json nicht bei: " + player + " GeistigerWiderstandbonus");
+		}
+	}
+	
+	
+
 }

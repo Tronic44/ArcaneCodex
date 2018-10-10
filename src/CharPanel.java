@@ -43,6 +43,9 @@ public class CharPanel extends JPanel {
 	private int intelligenzbonus;
 	private int[] waffenfertigkeitsboni;
 	private int waffenfertigkeitsbonus;
+	private int verteidigungswertbonus;
+	private int schockresistenzbonus;
+	private int geistigerWiderstandbonus;
 	private int[] rüstung;
 	private JTextField tFRüstungsschutz;
 	private JTextField tFBelastung;
@@ -62,6 +65,10 @@ public class CharPanel extends JPanel {
 			gui.panellist.get(index).willenskraftbonus = Reader.getWillenskraftbonus(player);
 			gui.panellist.get(index).intelligenzbonus = Reader.getIntelligenzbonus(player);
 			gui.panellist.get(index).waffenfertigkeitsboni = Reader.getWaffenfertigkeitsbonus(player);
+			gui.panellist.get(index).verteidigungswertbonus = Reader.getVerteidigungswertbonus(player);
+			gui.panellist.get(index).schockresistenzbonus = Reader.getSchockresistenzbonus(player);
+			gui.panellist.get(index).geistigerWiderstandbonus = Reader.getGeistigerWiderstandbonus(player);
+			
 
 		} catch (JSONException e) {
 			JOptionPane.showMessageDialog(frame,
@@ -193,7 +200,6 @@ public class CharPanel extends JPanel {
 		spGW.setModel(new SpinnerNumberModel(0, 0, 999, 1));
 		spGW.setBounds(121, 149, 37, 20);
 
-
 		JButton btnBerechne = new JButton("Berechne");
 		btnBerechne.setToolTipText("Berechnet die unten Stehenden Werte");
 		btnBerechne.addActionListener(new ActionListener() {
@@ -219,13 +225,13 @@ public class CharPanel extends JPanel {
 		panel.add(btnBerechne);
 
 		panel.add(spGW);
-		
+
 		tFWundgrad = new JTextField();
 		tFWundgrad.setEditable(false);
 		tFWundgrad.setBounds(70, 87, 95, 20);
 		panel.add(tFWundgrad);
 		tFWundgrad.setColumns(10);
-		
+
 		JSeparator separator = new JSeparator();
 		separator.setBounds(0, 196, 183, 1);
 		panel.add(separator);
