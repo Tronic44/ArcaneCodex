@@ -71,17 +71,39 @@
 			"Geschütze":"0"
 		}
 	},
+	//Das Fantasieschwert macht 3w10/2 +2 T Schaden und hat nen Manöverbonus auf Schwerter und Singen von 5 -> "Fantasieschwert":"2,5",	"Schadensbonus,Manöverbonus"
+	//Zauber
 	"Nahkampfwaffen":{
-		"Berdyche (Schusswaffenaufsatz)":{
-			"Schaden":"0",
-			"Mindeststärke":"0",
-			"Größenklasse":"M"
+		"Äxte":{	
+			"Zweihandstreitaxt":"0,0"
 		},
-		"Cestus (Kampfhandschuh)":{
-			"Schaden":"0",
-			"Mindeststärke":"0",
-			"Größenklasse":"M"
+		"Dolche":{
+			"Berdyche (Schusswaffenaufsatz)":"0,0",
+			"Cestus (Kampfhandschuh)":"0,0",
+			"Dolch":"0,0",
+			"Messer":"0,0",
+			"Meuchlerdolch":"2,2"
 		},
+		"Fechtwaffen":{
+			"Degen":"3,0"
+		},
+		"Improvisierte Waffen":{},
+		"Kettenwaffen":{},
+		"Lanze":{},
+		"Lasso / Peitsche":{},
+		"Schilde":{},
+		"Schwerter":{},
+		"Speere / Stäbe":{},
+		"Stumpf":{},
+		"Waffenlos":{},
+		"Armbrust":{},
+		"Blasrohr":{},
+		"Bogen":{},
+		"Schleuder":{},
+		"Schwarzpulver":{},
+		"Blind Kämpfen":{},
+		"Belagerungsgeräte":{},
+		"Geschütze":{}		
 	}
 	"Namen": ["Template","Ezaron","Test","test2!"]
 	}
