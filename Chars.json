@@ -27,8 +27,43 @@
 			"Bogen":"0",
 			"Schleuder":"0",
 			"Schwarzpulver":"0",
-			"Blind Kämpfen":"0"
+			"Blind Kämpfen":"0",
+			"Belagerungsgeräte":"0",
+			"Geschütze":"0"
+			
+		}
+	"Ezaron":{
+		"Charinit": "4",
+		"Kampftechnikeninitbonus":"0",
+		"Geschicklichkeitsbonus":"6",
+		"Wahrnehmnungsbonus":"3",
+		"Größenklasse":"M",
+		"Konstitutionsbonus":"0",
+		"Stärkebonus":"-2",
+		"Willenskraftbonus":"-1",
+		"Intelligenzbonus":"-1",
+		"Waffenfertigkeitsbonus":{
+			"Äxte":"0",
+			"Dolche":"8",
+			"Fechtwaffen":"0",
+			"Improvisierte Waffen":"0",
+			"Kettenwaffen":"0",
+			"Lanze":"0",
+			"Lasso / Peitsche":"0",
+			"Schilde":"0",
+			"Schwerter":"0",
+			"Speere / Stäbe":"0",
+			"Stumpf":"0",
+			"Waffenlos":"0",
+			"Armbrust":"0",
+			"Blasrohr":"0",
+			"Bogen":"0",
+			"Schleuder":"0",
+			"Schwarzpulver":"0",
+			"Blind Kämpfen":"0",
+			"Belagerungsgeräte":"0",
+			"Geschütze":"0"
 		}
 	},
-	"Namen": ["Template","Test","test2!"]
+	"Namen": ["Template","Ezaron","Test","test2!"]
 	}
