@@ -60,7 +60,7 @@ public class gui extends JFrame {
 				if (panellist.size() > 1) {
 					int[] inits = new int[panellist.size()];
 					for (int k = 0; k < panellist.size(); k++) {
-						inits[k] = 1 + (gui.panellist.get(k).charinit + gui.panellist.get(k).wahrnehmnungsbonus
+						inits[k] = 1 + (gui.panellist.get(k).charinit
 								+ Integer.parseInt(gui.panellist.get(k).tFBelastung.getText())
 								+ (int) (Math.random() * 10)) * inits.length;
 					}
@@ -100,7 +100,7 @@ public class gui extends JFrame {
 							y += 174;
 							x = 0;
 						}
-						gui.panellist.get(ort).tFfinalinit.setText(inits[ort]+"");
+						gui.panellist.get(ort).tFfinalinit.setText(inits[ort] + "");
 						panellist.get(ort).invalidate();
 						panellist.get(ort).validate();
 						panellist.get(ort).repaint();
