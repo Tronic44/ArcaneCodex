@@ -27,7 +27,7 @@ public class gui extends JFrame {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.setResizable(false);
+//		frame.setResizable(false);
 		frame.setBounds(100, 100, 208, 60);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,8 +58,8 @@ public class gui extends JFrame {
 		btnNeueRunde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (panellist.size() > 1) {
-					for(int k=0;k<panellist.size();k++) {
-						frame.getContentPane().remove(panellist.get(k));
+					for (int k = 0; k < panellist.size(); k++) {
+//						frame.getContentPane().remove(panellist.get(k));
 					}
 					int[] inits = new int[panellist.size()];
 					for (int k = 0; k < panellist.size(); k++) {
@@ -83,8 +83,35 @@ public class gui extends JFrame {
 							}
 						}
 					}
-					
-					
+					int maxinit = inits[0];
+					int lastmax = -100;
+					int ort = 0;
+					int x = 0;
+					int y = 0;
+					for (int all = 0; all < inits.length; all++) {
+						for (int k = 0; k < inits.length; k++) {
+							if (ort != k && inits[k] > maxinit && inits[k] > lastmax) {
+								maxinit = inits[k];
+								ort = k;
+							}
+						}
+						System.out.println(ort + " " + maxinit);
+						lastmax = maxinit;
+						panellist.get(ort).setBounds(x, y, 173, 516);
+						x += 174;
+						if (x > dim.getWidth() - 300) {
+							y += 174;
+							x = 0;
+						}
+						panellist.get(ort).invalidate();
+						panellist.get(ort).validate();
+						panellist.get(ort).repaint();
+//						frame.getContentPane().add(panellist.get(ort));
+					}
+					frame.invalidate();
+					frame.validate();
+					frame.repaint();
+
 				}
 
 			}
