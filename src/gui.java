@@ -58,9 +58,6 @@ public class gui extends JFrame {
 		btnNeueRunde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (panellist.size() > 1) {
-					for (int k = 0; k < panellist.size(); k++) {
-//						frame.getContentPane().remove(panellist.get(k));
-					}
 					int[] inits = new int[panellist.size()];
 					for (int k = 0; k < panellist.size(); k++) {
 						inits[k] = 1 + (gui.panellist.get(k).charinit + gui.panellist.get(k).wahrnehmnungsbonus
@@ -83,10 +80,6 @@ public class gui extends JFrame {
 							}
 						}
 					}
-					for (int k : inits) {
-						System.out.print(k + " ");
-					}
-					System.out.println();
 					int maxinit = inits[0];
 					int lastmax = 1000000000;
 					int ort = 0;
@@ -99,7 +92,6 @@ public class gui extends JFrame {
 								ort = k;
 							}
 						}
-						System.out.println(ort + " " + maxinit);
 						lastmax = maxinit;
 						maxinit = -100;
 						panellist.get(ort).setBounds(x, y, 173, 516);
@@ -108,10 +100,10 @@ public class gui extends JFrame {
 							y += 174;
 							x = 0;
 						}
+						gui.panellist.get(ort).tFfinalinit.setText(inits[ort]+"");
 						panellist.get(ort).invalidate();
 						panellist.get(ort).validate();
 						panellist.get(ort).repaint();
-//						frame.getContentPane().add(panellist.get(ort));
 					}
 					frame.invalidate();
 					frame.validate();

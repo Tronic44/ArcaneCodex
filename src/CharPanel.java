@@ -21,7 +21,7 @@ import javax.swing.JSeparator;
 public class CharPanel extends JPanel {
 
 	JPanel panel;
-	private JTextField tFfinalinit;
+	JTextField tFfinalinit;
 	private JTextField tFSchockresistenz;
 	private JTextField tFGeistigerWiderstand;
 	private JTextField tFVerteidigungswert;
@@ -80,6 +80,7 @@ public class CharPanel extends JPanel {
 	public CharPanel(JFrame frame, int i) {
 		index = i;
 		panel = new JPanel();
+		tFfinalinit = new JTextField();
 		tFSchadensschutz = new JTextField();
 		tFWaffenAngriff = new JTextField();
 		tFWaffenSchaden = new JTextField();
@@ -115,18 +116,6 @@ public class CharPanel extends JPanel {
 		});
 		cBchangeChar.setSelectedIndex(-1);
 		panel.add(cBchangeChar);
-
-//		JButton btnInit = new JButton("Init");
-//		btnInit.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				tFfinalinit.setText(
-//						"" + (1 + gui.panellist.get(index).charinit + gui.panellist.get(index).wahrnehmnungsbonus
-//								+ Integer.parseInt(gui.panellist.get(index).tFBelastung.getText())
-//								+ (int) (Math.random() * 10)));
-//			}
-//		});
-//		btnInit.setBounds(19, 485, 86, 20);
-//		panel.add(btnInit);
 
 		JButton btnKampfmodi = new JButton("Kampfmodi");
 		btnKampfmodi.setBounds(7, 272, 103, 23);
@@ -262,10 +251,10 @@ public class CharPanel extends JPanel {
 		lblWundgrad.setBounds(7, 90, 65, 14);
 		panel.add(lblWundgrad);
 
-//		tFfinalinit.setBackground(Color.WHITE);
-//		tFfinalinit.setEditable(false);
-//		tFfinalinit.setBounds(123, 485, 33, 20);
-//		panel.add(tFfinalinit);
+		tFfinalinit.setBackground(Color.WHITE);
+		tFfinalinit.setEditable(false);
+		tFfinalinit.setBounds(123, 485, 33, 20);
+		panel.add(tFfinalinit);
 
 		JLabel lblKp = new JLabel("KP");
 		lblKp.setBounds(7, 203, 33, 14);
