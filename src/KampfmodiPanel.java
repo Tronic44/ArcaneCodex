@@ -34,10 +34,16 @@ public class KampfmodiPanel {
 		frmRstungsauswahl.setVisible(true);
 		initpanelcompents();
 
-		JComboBox cBAuswahl = new JComboBox(new String[] { "Keine", "Bänderpanzer", "Bronzepanzer", "Fellrüstung",
-				"Holzrüstung", "Kettenrüstung", "Lamellenpanzer", "Leder", "Leichte Lederrüstung", "Plattenpanzer",
-				"Schlingpflanzen (lebende)", "Schuppenpanzer", "Schweres Leder (beschlagen)", "Verstärkte Kleidung",
-				"Vollplatte (Ritterrüstung)", "Wattierter Waffenrock", "Zwergenplattenpanzer" });
+		JComboBox cBAuswahl = new JComboBox(new String[] { "1/4 Deckung", "3/4 Deckung", "Am Boden liegend", "Angriff zum Niederschlag", "Angriff zum Verbluten", 
+				"Aus dem Gleichgewicht bringen", "Aus der Flanke angreifen", "B Schaden mit T Waffen", "Beritten gegen Unberitten", "Blind kämpfen/gegen Unsichtbaren/völlige Finsternis",
+				"Blindwütiger Angriff", "Defensiv", "Dunkler/dichter Nebel", "Entwaffnen", "fliehender Gegner", "Gegner bewusstlos schlagen", "Gegner liegt am Boden",
+				"Gegner umschlingen", "Halbdunkel/Nebel", "Halbe Deckung", "Höhenunterschied (von oben)", "Höhenunterschied (von unten)", "leicht beengt", 
+				"Markenzeichen einrizten", "mehrere Gegner mit einem Schlag", "falsche Hand", "Rüstung umgehen", "Schießscharte", "Schwer beengt",
+				"Überraschend angreifen", "unter Wasser", "lautlos töten", "volle Deckung", "von hinten angreifen", "Waffe treffen", "Waffen verhaken", "wehrloser Gegner", 
+				"zweihändig falsche Hand mit zu großer Waffe", 
+				"1/4 Deckung", "3/4 Deckung", "auf mittlere Entfernung schießen", "auf weite Entfernung schießen", "dunkler/dichter Nebel", "halbdunkel/Nebel", 
+				"halbe Deckung", "Schießscharte", "unter Wasser", "volle Deckung", "völlige Finsternis", "Zielen", "zwei Pfeile mit einem Schuss gleiches Ziel", 
+				"zwei Pfeile mit einem Schuss verschiedene Ziele"});
 		cBAuswahl.addPopupMenuListener(new PopupListener(cBAuswahl) {
 			public void popupMenuWillBecomeInvisible(PopupMenuEvent arg0) {
 				if (cBAuswahl.getSelectedItem() == null) {
