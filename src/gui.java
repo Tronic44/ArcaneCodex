@@ -53,6 +53,13 @@ int index = 0;
 			}
 		});
 		menuBar.add(btnNewButton_1);
+		
+		JButton btnNeueRunde = new JButton("Neue Runde");
+		btnNeueRunde.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		menuBar.add(btnNeueRunde);
 
 		pack();
 	}
