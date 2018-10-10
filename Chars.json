@@ -71,5 +71,17 @@
 			"Geschütze":"0"
 		}
 	},
+	"Nahkampfwaffen":{
+		"Berdyche (Schusswaffenaufsatz)":{
+			"Schaden":"0",
+			"Mindeststärke":"0",
+			"Größenklasse":"M"
+		},
+		"Cestus (Kampfhandschuh)":{
+			"Schaden":"0",
+			"Mindeststärke":"0",
+			"Größenklasse":"M"
+		},
+	}
 	"Namen": ["Template","Ezaron","Test","test2!"]
 	}
