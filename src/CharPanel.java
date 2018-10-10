@@ -32,10 +32,11 @@ public class CharPanel extends JPanel {
 	private JTextField tFWaffenSchaden;
 	private JTextField tfKampfmodiAngriff;
 	private JTextField tfKampfmodiSchaden;
-	private int charinit;
+	int charinit;
+	int init;
 	private int kampftechnikeninitbonus;
 	private int geschicklichkeitsbonus;
-	private int wahrnehmnungsbonus;
+	int wahrnehmnungsbonus;
 	private char größenklasse;
 	private int konstitutionsbonus;
 	private int stärkebonus;
@@ -48,7 +49,7 @@ public class CharPanel extends JPanel {
 	private int geistigerWiderstandbonus;
 	private int[] rüstung;
 	private JTextField tFRüstungsschutz;
-	private JTextField tFBelastung;
+	JTextField tFBelastung;
 	private JTextField tFSchadensschutz;
 	private int index;
 	private JTextField tFWundgrad;

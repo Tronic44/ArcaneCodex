@@ -18,8 +18,8 @@ public class gui extends JFrame {
 	int frameline = 0;
 	int spalte = 1;
 	Dimension dim;
-int index = 0;
-	static List<CharPanel> panellist= new ArrayList<>();
+	int index = 0;
+	static List<CharPanel> panellist = new ArrayList<>();
 
 	public gui() {
 		initialize();
@@ -28,7 +28,7 @@ int index = 0;
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 100, 60);
+		frame.setBounds(100, 100, 208, 60);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -53,15 +53,46 @@ int index = 0;
 			}
 		});
 		menuBar.add(btnNewButton_1);
-		
+
 		JButton btnNeueRunde = new JButton("Neue Runde");
 		btnNeueRunde.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (panellist.size() > 1) {
+					for(int k=0;k<panellist.size();k++) {
+						frame.getContentPane().remove(panellist.get(k));
+					}
+					int[] inits = new int[panellist.size()];
+					for (int k = 0; k < panellist.size(); k++) {
+						inits[k] = 1 + (gui.panellist.get(k).charinit + gui.panellist.get(k).wahrnehmnungsbonus
+								+ Integer.parseInt(gui.panellist.get(k).tFBelastung.getText())
+								+ (int) (Math.random() * 10)) * inits.length;
+					}
+					for (int all = 0; all < inits.length; all++) {
+						for (int k = 0; k < inits.length; k++) {
+							for (int h = 0; h < inits.length; h++) {
+								if (k == h) {
+									continue;
+								}
+								if (inits[k] == inits[h]) {
+									if ((int) (Math.random() * 2) > 1) {
+										inits[k] += 1;
+									} else {
+										inits[h] += 1;
+									}
+								}
+							}
+						}
+					}
+					
+					
+				}
+
 			}
 		});
 		menuBar.add(btnNeueRunde);
 
 		pack();
+
 	}
 
 	private void addpanel(JFrame frame) {
