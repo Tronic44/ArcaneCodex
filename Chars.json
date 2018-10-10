@@ -71,8 +71,6 @@
 			"Geschütze":"0"
 		}
 	},
-	//Das Fantasieschwert macht 3w10/2 +2 T Schaden und hat nen Manöverbonus auf Schwerter und Singen von 5 -> "Fantasieschwert":"2,5",	"Schadensbonus,Manöverbonus"
-	//Zauber
 	"Nahkampfwaffen":{
 		"Äxte":{	
 			"Zweihandstreitaxt":"0,0"
