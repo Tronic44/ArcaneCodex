@@ -11,9 +11,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.PopupMenuEvent;
-
 import org.json.JSONException;
-import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -149,7 +147,9 @@ public class CharPanel extends JPanel {
 		JButton btnRstung = new JButton("Rüstung");
 		btnRstung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				RüstungPanel.initRüstungPanel(stärkebonus);
+
+				new RüstungPanel(stärkebonus);
+
 			}
 		});
 		btnRstung.setBounds(8, 60, 103, 23);

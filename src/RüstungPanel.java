@@ -1,7 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import java.awt.EventQueue;
+import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -15,7 +15,7 @@ import java.awt.Color;
 
 public class RüstungPanel {
 
-	private JFrame frmRstungsauswahl;
+	JFrame frmRstungsauswahl;
 	private int cBRüsungselect;
 	private int[][] rüstungswerte = { { 0, 0, 0 }, { 7, -2, 4 }, { 6, -3, 3 }, { 4, -1, 2 }, { 3, -1, 2 }, { 7, -2, 4 },
 			{ 6, -2, 4 }, { 4, -1, 2 }, { 3, -1, 2 }, { 9, -3, 5 }, { 4, -1, 2 }, { 6, -2, 3 }, { 5, -2, 3 },
@@ -26,27 +26,13 @@ public class RüstungPanel {
 	private JSpinner spBL;
 	private static int stärke;
 
-	public static int[] initRüstungPanel(int stärkebonus) {
+
+	public RüstungPanel(int stärkebonus) {
 		stärke = stärkebonus + 5;
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RüstungPanel window = new RüstungPanel();
-					window.frmRstungsauswahl.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-
-		return null;
-	}
-
-	public RüstungPanel() {
-
 		frmRstungsauswahl = new JFrame();
 		tFRS = new JTextField();
 		tFBL = new JTextField();
+		frmRstungsauswahl.setVisible(true);
 		initpanelcompents();
 
 		JComboBox cBAuswahl = new JComboBox(new String[] { "Keine", "Bänderpanzer", "Bronzepanzer", "Fellrüstung",
