@@ -9,6 +9,9 @@
 		"Stärkebonus":"0",
 		"Willenskraftbonus":"0",
 		"Intelligenzbonus":"0",
+		"Verteidigungswertbonus":"0";
+		"Schockresistenzbonus":"0";
+		"GeistigerWiderstandbonus":"0";
 		"Waffenfertigkeitsbonus":{
 			"Äxte":"2",
 			"Dolche":"0",
