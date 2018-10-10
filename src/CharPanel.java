@@ -43,23 +43,24 @@ public class CharPanel extends JPanel {
 	private int intelligenzbonus;
 	private int[] waffenfertigkeitsboni;
 	private int waffenfertigkeitsbonus;
-	private static int[] rüstung;
-	private static JTextField tFRüstungsschutz;
-	private static JTextField tFBelastung;
+	private int[] rüstung;
+	private JTextField tFRüstungsschutz;
+	private JTextField tFBelastung;
 	private JTextField tFSchadensschutz;
+	private int index;
 
-	private void initChar(String player, JFrame frame) {
+	private void initChar(String player, JFrame frame, int index) {
 		try {
-			charinit = Reader.getCharinit(player);
-			kampftechnikeninitbonus = Reader.getKampftechnikeninitbonus(player);
-			geschicklichkeitsbonus = Reader.getGeschicklichkeitsbonus(player);
-			wahrnehmnungsbonus = Reader.getWahrnehmnungsbonus(player);
-			größenklasse = Reader.getGrößenklasse(player);
-			konstitutionsbonus = Reader.getKonstitutionsbonus(player);
-			stärkebonus = Reader.getStärkebonus(player);
-			willenskraftbonus = Reader.getWillenskraftbonus(player);
-			intelligenzbonus = Reader.getIntelligenzbonus(player);
-			waffenfertigkeitsboni = Reader.getWaffenfertigkeitsbonus(player);
+			gui.panellist.get(index).charinit = Reader.getCharinit(player);
+			gui.panellist.get(index).kampftechnikeninitbonus = Reader.getKampftechnikeninitbonus(player);
+			gui.panellist.get(index).geschicklichkeitsbonus = Reader.getGeschicklichkeitsbonus(player);
+			gui.panellist.get(index).wahrnehmnungsbonus = Reader.getWahrnehmnungsbonus(player);
+			gui.panellist.get(index).größenklasse = Reader.getGrößenklasse(player);
+			gui.panellist.get(index).konstitutionsbonus = Reader.getKonstitutionsbonus(player);
+			gui.panellist.get(index).stärkebonus = Reader.getStärkebonus(player);
+			gui.panellist.get(index).willenskraftbonus = Reader.getWillenskraftbonus(player);
+			gui.panellist.get(index).intelligenzbonus = Reader.getIntelligenzbonus(player);
+			gui.panellist.get(index).waffenfertigkeitsboni = Reader.getWaffenfertigkeitsbonus(player);
 
 		} catch (JSONException e) {
 			JOptionPane.showMessageDialog(frame,
@@ -68,8 +69,8 @@ public class CharPanel extends JPanel {
 		}
 	}
 
-	public CharPanel(JFrame frame) {
-
+	public CharPanel(JFrame frame, int i) {
+		index = i;
 		panel = new JPanel();
 		tFfinalinit = new JTextField();
 		tFfinalAngriffManöver = new JTextField();
@@ -99,11 +100,11 @@ public class CharPanel extends JPanel {
 				}
 				if (cBCharselect == null) {
 					cBCharselect = cBchangeChar.getSelectedItem().toString();
-					initChar(cBchangeChar.getSelectedItem().toString(), frame);
+					gui.panellist.get(index).initChar(cBchangeChar.getSelectedItem().toString(), frame, index);
 				}
 				if (!cBchangeChar.getSelectedItem().toString().equals(cBCharselect)) {
 					cBCharselect = cBchangeChar.getSelectedItem().toString();
-					initChar(cBchangeChar.getSelectedItem().toString(), frame);
+					gui.panellist.get(index).initChar(cBchangeChar.getSelectedItem().toString(), frame, index);
 				}
 			}
 		});
@@ -113,8 +114,9 @@ public class CharPanel extends JPanel {
 		JButton btnInit = new JButton("Init");
 		btnInit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tFfinalinit.setText(
-						"" + (1 + charinit + Integer.parseInt(tFBelastung.getText()) + (int) (Math.random() * 10)));
+				tFfinalinit.setText("" + (1 + gui.panellist.get(index).charinit
+						+ Integer.parseInt(gui.panellist.get(index).tFBelastung.getText())
+						+ (int) (Math.random() * 10)));
 			}
 		});
 		btnInit.setBounds(19, 485, 86, 20);
@@ -148,7 +150,7 @@ public class CharPanel extends JPanel {
 		btnRstung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				new RüstungPanel(stärkebonus);
+				new RüstungPanel(stärkebonus, index);
 
 			}
 		});
@@ -297,19 +299,24 @@ public class CharPanel extends JPanel {
 		btnBerechne.setToolTipText("Berechnet die unten Stehenden Werte");
 		btnBerechne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				tFAngriffboni.setText(" " + (waffenfertigkeitsbonus + (int) spKP.getValue()
-						+ Integer.parseInt(tfKampfmodiAngriff.getText())
-						+ Integer.parseInt(tFfinalAngriffManöver.getText()) + (int) spSonstigesAngriff.getValue()
-						- (int) spErfolge.getValue() + Integer.parseInt(tFBelastung.getText())
+				tFAngriffboni.setText(" " + (gui.panellist.get(index).waffenfertigkeitsbonus + (int) spKP.getValue()
+						+ Integer.parseInt(gui.panellist.get(index).tfKampfmodiAngriff.getText())
+						+ Integer.parseInt(gui.panellist.get(index).tFfinalAngriffManöver.getText())
+						+ (int) spSonstigesAngriff.getValue() - (int) spErfolge.getValue()
+						+ Integer.parseInt(gui.panellist.get(index).tFBelastung.getText())
 						- (4 * (int) spMehrfachaktion.getValue())));
-				tFSchadensboni.setText("" + (Integer.parseInt(tfKampfmodiSchaden.getText()) + stärkebonus
-						+ (int) spSonstigesSchaden.getValue() + (int) spErfolge.getValue()
-						+ Integer.parseInt(tFfinalSchadenManöver.getText())));
-				tFSchadensschutz.setText("" + Integer.parseInt(tFRüstungsschutz.getText()));
-				tFVerteidigungswert
-						.setText("" + (14 + geschicklichkeitsbonus + wahrnehmnungsbonus + (int) spVW.getValue()));
-				tFGeistigerWiderstand.setText("" + (14 + konstitutionsbonus + stärkebonus + (int) spGW.getValue()));
-				tFSchockresistenz.setText("" + (14 + willenskraftbonus + intelligenzbonus + (int) spSR.getValue()));
+				tFSchadensboni.setText("" + (Integer.parseInt(gui.panellist.get(index).tfKampfmodiSchaden.getText())
+						+ gui.panellist.get(index).stärkebonus + (int) spSonstigesSchaden.getValue()
+						+ (int) spErfolge.getValue()
+						+ Integer.parseInt(gui.panellist.get(index).tFfinalSchadenManöver.getText())));
+				tFSchadensschutz.setText("" + Integer.parseInt(gui.panellist.get(index).tFRüstungsschutz.getText()));
+				tFVerteidigungswert.setText("" + (14 + gui.panellist.get(index).geschicklichkeitsbonus
+						+ gui.panellist.get(index).wahrnehmnungsbonus + (int) spVW.getValue()));
+				tFGeistigerWiderstand.setText("" + (14 + gui.panellist.get(index).konstitutionsbonus
+						+ gui.panellist.get(index).stärkebonus + (int) spGW.getValue()));
+				tFSchockresistenz.setText("" + (14 + gui.panellist.get(index).willenskraftbonus
+						+ gui.panellist.get(index).intelligenzbonus + (int) spSR.getValue()));
+//				System.out.print(gui.panellist.getindex0).waffenfertigkeitsbonus);
 			}
 		});
 		btnBerechne.setBounds(23, 320, 127, 23);
@@ -319,12 +326,13 @@ public class CharPanel extends JPanel {
 
 		// Das ausklammern, um das Panel im Editor zu bearbeiten
 		add(panel);
+
 	}
 
-	protected static void setRüstung(int[] rs) {
-		rüstung = rs;
-		tFRüstungsschutz.setText(rüstung[0] + "");
-		tFBelastung.setText(rüstung[1] + "");
+	protected static void setRüstung(int[] rs, int index) {
+		gui.panellist.get(index).rüstung = rs;
+		gui.panellist.get(index).tFRüstungsschutz.setText(gui.panellist.get(index).rüstung[0] + "");
+		gui.panellist.get(index).tFBelastung.setText(gui.panellist.get(index).rüstung[1] + "");
 
 	}
 

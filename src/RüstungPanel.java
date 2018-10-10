@@ -26,8 +26,7 @@ public class RüstungPanel {
 	private JSpinner spBL;
 	private static int stärke;
 
-
-	public RüstungPanel(int stärkebonus) {
+	public RüstungPanel(int stärkebonus, int index) {
 		stärke = stärkebonus + 5;
 		frmRstungsauswahl = new JFrame();
 		tFRS = new JTextField();
@@ -67,7 +66,7 @@ public class RüstungPanel {
 		JButton btnNewButton = new JButton("Fertig");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				fertig();
+				fertig(index);
 			}
 		});
 		btnNewButton.setBounds(84, 154, 89, 23);
@@ -113,11 +112,12 @@ public class RüstungPanel {
 
 	}
 
-	private void fertig() {
+	private void fertig(int index) {
 
 		frmRstungsauswahl.dispose();
-		CharPanel.setRüstung((new int[] { (rüstungswerte[cBRüsungselect][0] + (int) spRS.getValue()),
-				(rüstungswerte[cBRüsungselect][1] + (int) spBL.getValue()) }));
+		gui.panellist.get(index)
+				.setRüstung((new int[] { (this.rüstungswerte[cBRüsungselect][0] + (int) spRS.getValue()),
+						(this.rüstungswerte[cBRüsungselect][1] + (int) spBL.getValue()) }), index);
 
 	}
 

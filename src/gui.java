@@ -1,11 +1,14 @@
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
+import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
@@ -16,6 +19,8 @@ public class gui extends JFrame {
 	int frameline = 0;
 	int spalte = 1;
 	Dimension dim;
+int index = 0;
+	static List<CharPanel> panellist= new ArrayList<>();
 
 	public gui() {
 		initialize();
@@ -49,12 +54,14 @@ public class gui extends JFrame {
 			}
 		});
 		menuBar.add(btnNewButton_1);
-		
+
 		pack();
 	}
 
 	private void addpanel(JFrame frame) {
-		CharPanel panel = new CharPanel(frame);
+		CharPanel panel = new CharPanel(frame, index);
+		panellist.add(panel);
+		index++;
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.setBounds(line, spalte, 173, 516);
 		panel.setLayout(null);
