@@ -68,7 +68,6 @@ public class CharPanel extends JPanel {
 			gui.panellist.get(index).verteidigungswertbonus = Reader.getVerteidigungswertbonus(player);
 			gui.panellist.get(index).schockresistenzbonus = Reader.getSchockresistenzbonus(player);
 			gui.panellist.get(index).geistigerWiderstandbonus = Reader.getGeistigerWiderstandbonus(player);
-			
 
 		} catch (JSONException e) {
 			JOptionPane.showMessageDialog(frame,
@@ -214,11 +213,14 @@ public class CharPanel extends JPanel {
 						+ (int) spErfolge.getValue()));
 				tFSchadensschutz.setText("" + Integer.parseInt(gui.panellist.get(index).tFRüstungsschutz.getText()));
 				tFVerteidigungswert.setText("" + (14 + gui.panellist.get(index).geschicklichkeitsbonus
-						+ gui.panellist.get(index).wahrnehmnungsbonus + (int) spVW.getValue()));
+						+ gui.panellist.get(index).verteidigungswertbonus + gui.panellist.get(index).wahrnehmnungsbonus
+						+ (int) spVW.getValue()));
 				tFGeistigerWiderstand.setText("" + (14 + gui.panellist.get(index).konstitutionsbonus
-						+ gui.panellist.get(index).stärkebonus + (int) spGW.getValue()));
+						+ gui.panellist.get(index).geistigerWiderstandbonus + gui.panellist.get(index).stärkebonus
+						+ (int) spGW.getValue()));
 				tFSchockresistenz.setText("" + (14 + gui.panellist.get(index).willenskraftbonus
-						+ gui.panellist.get(index).intelligenzbonus + (int) spSR.getValue()));
+						+ gui.panellist.get(index).schockresistenzbonus + gui.panellist.get(index).intelligenzbonus
+						+ (int) spSR.getValue()));
 			}
 		});
 		btnBerechne.setBounds(23, 348, 127, 23);
