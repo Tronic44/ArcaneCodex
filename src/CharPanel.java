@@ -32,6 +32,20 @@ public class CharPanel extends JPanel {
 	private JTextField tFWaffenSchaden;
 	private JTextField tfKampfmodiAngriff;
 	private JTextField tfKampfmodiSchaden;
+	private JSpinner spMehrfachaktion;
+	private JSpinner spKP;
+	private JSpinner spErfolge;
+	private JSpinner spSonstigesSchaden;
+	private JSpinner spLP;
+	private JSpinner spSonstigesAngriff;
+	private JSpinner spVW;
+	private JSpinner spSR;
+	private JSpinner spGW;
+	private JButton btnKampfmodi;
+	private JButton btnWaffe;
+	private JButton btnRstung;
+	private JComboBox cBKampfart;
+	boolean aktivate = false;
 	int charinit;
 	int init;
 	private int kampftechnikeninitbonus;
@@ -112,25 +126,27 @@ public class CharPanel extends JPanel {
 					cBCharselect = cBchangeChar.getSelectedItem().toString();
 					gui.panellist.get(index).initChar(cBchangeChar.getSelectedItem().toString(), frame, index);
 				}
+				aktivate = true;
+				aktivate();
 			}
+
 		});
 		cBchangeChar.setSelectedIndex(-1);
 		panel.add(cBchangeChar);
 
-		JButton btnKampfmodi = new JButton("Kampfmodi");
+		btnKampfmodi = new JButton("Kampfmodi");
 		btnKampfmodi.setBounds(7, 272, 103, 23);
 		panel.add(btnKampfmodi);
 
-//		JComboBox<String> cBKampfart = new JComboBox<String>(
-		JComboBox cBKampfart = new JComboBox(new String[] { "Angreifen", "Abblocken", "Parieren", "Ausweichen" });
+		cBKampfart = new JComboBox(new String[] { "Angreifen", "Abblocken", "Parieren", "Ausweichen" });
 		cBKampfart.setBounds(70, 110, 95, 20);
 		panel.add(cBKampfart);
 
-		JButton btnWaffe = new JButton("Waffe");
+		btnWaffe = new JButton("Waffe");
 		btnWaffe.setBounds(7, 298, 103, 23);
 		panel.add(btnWaffe);
 
-		JButton btnRstung = new JButton("Rüstung");
+		btnRstung = new JButton("Rüstung");
 		btnRstung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -141,80 +157,53 @@ public class CharPanel extends JPanel {
 		btnRstung.setBounds(8, 60, 103, 23);
 		panel.add(btnRstung);
 
-		JSpinner spMehrfachaktion = new JSpinner();
+		spMehrfachaktion = new JSpinner();
 		spMehrfachaktion.setModel(new SpinnerNumberModel(0, 0, 10, 1));
 		spMehrfachaktion.setToolTipText("Anzahl der Mehrfachaktionen");
 		spMehrfachaktion.setBounds(117, 247, 47, 20);
 		panel.add(spMehrfachaktion);
 
-		JSpinner spKP = new JSpinner();
+		spKP = new JSpinner();
 		spKP.setModel(new SpinnerNumberModel(0, 0, 99, 1));
 		spKP.setToolTipText("KP");
 		spKP.setBounds(117, 200, 47, 20);
 		panel.add(spKP);
 
-		JSpinner spErfolge = new JSpinner();
+		spErfolge = new JSpinner();
 		spErfolge.setModel(new SpinnerNumberModel(0, 0, 99, 1));
 		spErfolge.setToolTipText("Erfolge");
 		spErfolge.setBounds(117, 224, 47, 20);
 		panel.add(spErfolge);
 
-		JSpinner spSonstigesSchaden = new JSpinner();
+		spSonstigesSchaden = new JSpinner();
 		spSonstigesSchaden.setModel(new SpinnerNumberModel(0, -99, 99, 1));
 		spSonstigesSchaden.setBounds(130, 325, 37, 20);
 		panel.add(spSonstigesSchaden);
 
-		JSpinner spLP = new JSpinner();
+		spLP = new JSpinner();
 		spLP.setModel(new SpinnerNumberModel(0, 0, 999, 1));
 		spLP.setToolTipText("Lebenspunkte");
 		spLP.setBounds(117, 37, 47, 20);
 		panel.add(spLP);
 
-		JSpinner spSonstigesAngriff = new JSpinner();
+		spSonstigesAngriff = new JSpinner();
 		spSonstigesAngriff.setModel(new SpinnerNumberModel(0, -99, 99, 1));
 		spSonstigesAngriff.setBounds(92, 325, 37, 20);
 		panel.add(spSonstigesAngriff);
 
-		JSpinner spVW = new JSpinner();
+		spVW = new JSpinner();
 		spVW.setModel(new SpinnerNumberModel(0, 0, 999, 1));
 		spVW.setBounds(17, 149, 37, 20);
 		panel.add(spVW);
 
-		JSpinner spSR = new JSpinner();
+		spSR = new JSpinner();
 		spSR.setModel(new SpinnerNumberModel(0, 0, 999, 1));
 		spSR.setBounds(69, 149, 37, 20);
 		panel.add(spSR);
 
-		JSpinner spGW = new JSpinner();
+		spGW = new JSpinner();
 		spGW.setModel(new SpinnerNumberModel(0, 0, 999, 1));
 		spGW.setBounds(121, 149, 37, 20);
-
-		JButton btnBerechne = new JButton("Berechne");
-		btnBerechne.setToolTipText("Berechnet die unten Stehenden Werte");
-		btnBerechne.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				tFAngriffboni.setText(" " + (gui.panellist.get(index).waffenfertigkeitsbonus + (int) spKP.getValue()
-						+ Integer.parseInt(gui.panellist.get(index).tfKampfmodiAngriff.getText())
-						+ (int) spSonstigesAngriff.getValue() - (int) spErfolge.getValue()
-						+ Integer.parseInt(gui.panellist.get(index).tFBelastung.getText())
-						- (4 * (int) spMehrfachaktion.getValue())));
-				tFSchadensboni.setText("" + (Integer.parseInt(gui.panellist.get(index).tfKampfmodiSchaden.getText())
-						+ gui.panellist.get(index).stärkebonus + (int) spSonstigesSchaden.getValue()
-						+ (int) spErfolge.getValue()));
-				tFSchadensschutz.setText("" + Integer.parseInt(gui.panellist.get(index).tFRüstungsschutz.getText()));
-				tFVerteidigungswert.setText("" + (14 + gui.panellist.get(index).geschicklichkeitsbonus
-						+ gui.panellist.get(index).verteidigungswertbonus + gui.panellist.get(index).wahrnehmnungsbonus
-						+ (int) spVW.getValue()));
-				tFGeistigerWiderstand.setText("" + (14 + gui.panellist.get(index).konstitutionsbonus
-						+ gui.panellist.get(index).geistigerWiderstandbonus + gui.panellist.get(index).stärkebonus
-						+ (int) spGW.getValue()));
-				tFSchockresistenz.setText("" + (14 + gui.panellist.get(index).willenskraftbonus
-						+ gui.panellist.get(index).schockresistenzbonus + gui.panellist.get(index).intelligenzbonus
-						+ (int) spSR.getValue()));
-			}
-		});
-		btnBerechne.setBounds(23, 348, 127, 23);
-		panel.add(btnBerechne);
 
 		panel.add(spGW);
 
@@ -227,6 +216,21 @@ public class CharPanel extends JPanel {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(0, 196, 183, 1);
 		panel.add(separator);
+
+		spErfolge.setEnabled(aktivate);
+		spVW.setEnabled(aktivate);
+		spSR.setEnabled(aktivate);
+		spGW.setEnabled(aktivate);
+		spKP.setEnabled(aktivate);
+		spErfolge.setEnabled(aktivate);
+		spMehrfachaktion.setEnabled(aktivate);
+		spSonstigesAngriff.setEnabled(aktivate);
+		spSonstigesSchaden.setEnabled(aktivate);
+		spLP.setEnabled(aktivate);
+		btnRstung.setEnabled(aktivate);
+		btnKampfmodi.setEnabled(aktivate);
+		btnWaffe.setEnabled(aktivate);
+		cBKampfart.setEditable(aktivate);
 
 		// Das ausklammern, um das Panel im Editor zu bearbeiten
 		add(panel);
@@ -261,13 +265,13 @@ public class CharPanel extends JPanel {
 		panel.add(lblKp);
 
 		JLabel lblSchadensminderung = new JLabel("Schadensminderung:");
-		lblSchadensminderung.setBounds(7, 418, 132, 14);
+		lblSchadensminderung.setBounds(7, 396, 132, 14);
 		panel.add(lblSchadensminderung);
 
 		tFSchadensschutz.setToolTipText("Die Verminderung des Schadens ( Rüstungsschutz)");
 		tFSchadensschutz.setEditable(false);
 		tFSchadensschutz.setBackground(Color.WHITE);
-		tFSchadensschutz.setBounds(129, 415, 37, 20);
+		tFSchadensschutz.setBounds(129, 393, 37, 20);
 		panel.add(tFSchadensschutz);
 
 		JLabel lblErfolge = new JLabel("Erfolge");
@@ -316,12 +320,12 @@ public class CharPanel extends JPanel {
 
 		tFAngriffboni.setBackground(Color.WHITE);
 		tFAngriffboni.setEditable(false);
-		tFAngriffboni.setBounds(91, 375, 37, 20);
+		tFAngriffboni.setBounds(91, 353, 37, 20);
 		panel.add(tFAngriffboni);
 
 		tFSchadensboni.setBackground(Color.WHITE);
 		tFSchadensboni.setEditable(false);
-		tFSchadensboni.setBounds(129, 395, 37, 20);
+		tFSchadensboni.setBounds(129, 373, 37, 20);
 		panel.add(tFSchadensboni);
 
 		JLabel lblSonstiges = new JLabel("Sonstiges");
@@ -329,11 +333,11 @@ public class CharPanel extends JPanel {
 		panel.add(lblSonstiges);
 
 		JLabel lblAngriffboni = new JLabel("Angriffsboni:");
-		lblAngriffboni.setBounds(7, 378, 93, 14);
+		lblAngriffboni.setBounds(7, 356, 93, 14);
 		panel.add(lblAngriffboni);
 
 		JLabel lblSchadensboni = new JLabel("Schadensboni:");
-		lblSchadensboni.setBounds(7, 398, 93, 14);
+		lblSchadensboni.setBounds(7, 376, 93, 14);
 		panel.add(lblSchadensboni);
 
 		JLabel lblLebenspunkte = new JLabel("Lebenspunkte");
@@ -394,5 +398,58 @@ public class CharPanel extends JPanel {
 		tFBelastung.setToolTipText("Belastung");
 		tFBelastung.setToolTipText("Belastung");
 
+	}
+
+	public void nextRound() {
+		gui.panellist.get(index).spKP.setValue(0);
+		gui.panellist.get(index).spErfolge.setValue(0);
+		gui.panellist.get(index).tFWaffenAngriff.setText("0");
+		gui.panellist.get(index).tFWaffenSchaden.setText("0");
+		gui.panellist.get(index).tfKampfmodiAngriff.setText("0");
+		gui.panellist.get(index).tfKampfmodiSchaden.setText("0");
+		berechne();
+	}
+
+	private void berechne() {
+		tFAngriffboni.setText(" " + (gui.panellist.get(index).waffenfertigkeitsbonus + (int) spKP.getValue()
+				+ Integer.parseInt(gui.panellist.get(index).tfKampfmodiAngriff.getText())
+				+ (int) spSonstigesAngriff.getValue() - (int) spErfolge.getValue()
+				+ Integer.parseInt(gui.panellist.get(index).tFBelastung.getText())
+				- (4 * (int) spMehrfachaktion.getValue())));
+		tFSchadensboni.setText("" + (Integer.parseInt(gui.panellist.get(index).tfKampfmodiSchaden.getText())
+				+ gui.panellist.get(index).stärkebonus + (int) spSonstigesSchaden.getValue()
+				+ (int) spErfolge.getValue()));
+		tFSchadensschutz.setText("" + Integer.parseInt(gui.panellist.get(index).tFRüstungsschutz.getText()));
+		tFVerteidigungswert.setText("" + (14 + gui.panellist.get(index).geschicklichkeitsbonus
+				+ gui.panellist.get(index).verteidigungswertbonus + gui.panellist.get(index).wahrnehmnungsbonus
+				+ (int) spVW.getValue()));
+		tFGeistigerWiderstand.setText(""
+				+ (14 + gui.panellist.get(index).konstitutionsbonus + gui.panellist.get(index).geistigerWiderstandbonus
+						+ gui.panellist.get(index).stärkebonus + (int) spGW.getValue()));
+		tFSchockresistenz.setText(
+				"" + (14 + gui.panellist.get(index).willenskraftbonus + gui.panellist.get(index).schockresistenzbonus
+						+ gui.panellist.get(index).intelligenzbonus + (int) spSR.getValue()));
+	}
+
+	private void aktivate() {
+		gui.panellist.get(index).spErfolge.setEnabled(aktivate);
+		gui.panellist.get(index).spVW.setEnabled(aktivate);
+		gui.panellist.get(index).spSR.setEnabled(aktivate);
+		gui.panellist.get(index).spGW.setEnabled(aktivate);
+		gui.panellist.get(index).spKP.setEnabled(aktivate);
+		gui.panellist.get(index).spErfolge.setEnabled(aktivate);
+		gui.panellist.get(index).spMehrfachaktion.setEnabled(aktivate);
+		gui.panellist.get(index).spSonstigesAngriff.setEnabled(aktivate);
+		gui.panellist.get(index).spSonstigesSchaden.setEnabled(aktivate);
+		gui.panellist.get(index).spLP.setEnabled(aktivate);
+		gui.panellist.get(index).btnRstung.setEnabled(aktivate);
+		gui.panellist.get(index).btnKampfmodi.setEnabled(aktivate);
+		gui.panellist.get(index).btnWaffe.setEnabled(aktivate);
+		gui.panellist.get(index).cBKampfart.setEditable(aktivate);
+
+	}
+
+	public void remove1index() {
+		index -= 1;
 	}
 }
